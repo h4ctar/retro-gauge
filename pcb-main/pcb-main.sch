@@ -258,7 +258,7 @@ AR Path="/612034A3/612E39AB" Ref="J?"  Part="1"
 AR Path="/612E39AB" Ref="J1"  Part="1" 
 F 0 "J1" H 3771 1596 50  0000 R CNN
 F 1 "AVR-ISP-6" H 3771 1505 50  0000 R CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_2x03_P2.54mm_Vertical_SMD" V 3850 1550 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical_SMD" V 3850 1550 50  0001 C CNN
 F 3 " ~" H 2825 950 50  0001 C CNN
 	1    4100 1500
 	1    0    0    -1  
@@ -277,7 +277,7 @@ Text Label 2650 1900 0    50   ~ 0
 SCK
 Text Label 4500 1600 0    50   ~ 0
 RESET
-Text Label 2650 2900 0    50   ~ 0
+Text Label 3400 2900 0    50   ~ 0
 RESET
 $Comp
 L symbols:HT1621B U2
@@ -817,11 +817,11 @@ Text Label 1600 6200 2    50   ~ 0
 LCD_WR
 Text Label 1600 6300 2    50   ~ 0
 LCD_DATA
-Text Label 2650 1400 0    50   ~ 0
+Text Label 2950 1700 0    50   ~ 0
 LCD_CS
-Text Label 2650 1500 0    50   ~ 0
+Text Label 2950 1800 0    50   ~ 0
 LCD_WR
-Text Label 2650 1600 0    50   ~ 0
+Text Label 2950 1900 0    50   ~ 0
 LCD_DATA
 Text Notes 3550 4350 0    50   ~ 0
 TODO: Double check all the pins
@@ -835,10 +835,10 @@ Connection ~ 5750 3150
 Wire Wire Line
 	5750 3150 5850 3150
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0113
 U 1 1 6149D2EC
 P 5750 3650
-F 0 "#PWR?" H 5750 3400 50  0001 C CNN
+F 0 "#PWR0113" H 5750 3400 50  0001 C CNN
 F 1 "GND" H 5755 3477 50  0000 C CNN
 F 2 "" H 5750 3650 50  0001 C CNN
 F 3 "" H 5750 3650 50  0001 C CNN
@@ -851,4 +851,37 @@ Text Label 7100 2100 0    50   ~ 0
 TACHO
 Text Label 7100 2200 0    50   ~ 0
 SPEEDO
+$Comp
+L power:+5V #PWR?
+U 1 1 613D3197
+P 3250 2400
+AR Path="/612034A3/613D3197" Ref="#PWR?"  Part="1" 
+AR Path="/613D3197" Ref="#PWR0114"  Part="1" 
+F 0 "#PWR0114" H 3250 2250 50  0001 C CNN
+F 1 "+5V" H 3265 2573 50  0000 C CNN
+F 2 "" H 3250 2400 50  0001 C CNN
+F 3 "" H 3250 2400 50  0001 C CNN
+	1    3250 2400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R7
+U 1 1 613D3AC3
+P 3250 2650
+F 0 "R7" H 3180 2604 50  0000 R CNN
+F 1 "10k" H 3180 2695 50  0000 R CNN
+F 2 "" V 3180 2650 50  0001 C CNN
+F 3 "~" H 3250 2650 50  0001 C CNN
+	1    3250 2650
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3400 2900 3250 2900
+Wire Wire Line
+	3250 2800 3250 2900
+Connection ~ 3250 2900
+Wire Wire Line
+	3250 2900 2650 2900
+Wire Wire Line
+	3250 2500 3250 2400
 $EndSCHEMATC

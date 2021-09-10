@@ -35,8 +35,6 @@ F 3 "~" H 3900 3950 50  0001 C CNN
 	1    3900 3950
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	3350 3950 3600 3950
 $Comp
 L Device:R R?
 U 1 1 6130D7C9
@@ -177,21 +175,6 @@ Wire Wire Line
 Wire Wire Line
 	5400 3050 5400 3750
 Connection ~ 5400 3750
-$Comp
-L power:GND #PWR?
-U 1 1 6130CEF7
-P 4250 4100
-F 0 "#PWR?" H 4250 3850 50  0001 C CNN
-F 1 "GND" H 4255 3927 50  0000 C CNN
-F 2 "" H 4250 4100 50  0001 C CNN
-F 3 "" H 4250 4100 50  0001 C CNN
-	1    4250 4100
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4250 3950 4250 4100
-Wire Wire Line
-	4050 3950 4250 3950
 Wire Wire Line
 	3350 4350 3750 4350
 Wire Wire Line
@@ -203,8 +186,6 @@ Wire Wire Line
 Connection ~ 2750 2050
 Wire Wire Line
 	2750 2050 2750 2150
-Text Notes 4750 5050 0    50   ~ 0
-Note: Where is pin 22?
 $Comp
 L Connector:AVR-ISP-6 J?
 U 1 1 6133DCED
@@ -242,33 +223,44 @@ Wire Wire Line
 	4250 750  4250 850 
 Wire Wire Line
 	4250 1750 4250 1850
+$Comp
+L power:+5V #PWR?
+U 1 1 613C4E61
+P 4150 3850
+F 0 "#PWR?" H 4150 3700 50  0001 C CNN
+F 1 "+5V" H 4165 4023 50  0000 C CNN
+F 2 "" H 4150 3850 50  0001 C CNN
+F 3 "" H 4150 3850 50  0001 C CNN
+	1    4150 3850
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	4750 1250 5150 1250
+	4050 3950 4150 3950
 Wire Wire Line
-	5150 1250 5150 2750
+	4150 3950 4150 3850
 Wire Wire Line
-	5150 2750 3350 2750
+	3350 3950 3450 3950
+Text Label 4750 1150 0    50   ~ 0
+MISO
+Text Label 4750 1250 0    50   ~ 0
+MOSI
+Text Label 4750 1350 0    50   ~ 0
+SCK
+Text Label 4750 1450 0    50   ~ 0
+RESET
+Text Label 3550 4100 0    50   ~ 0
+RESET
 Wire Wire Line
-	4750 1150 5250 1150
+	3550 4100 3450 4100
 Wire Wire Line
-	5250 1150 5250 2850
+	3450 4100 3450 3950
+Connection ~ 3450 3950
 Wire Wire Line
-	5250 2850 3350 2850
-Wire Wire Line
-	3350 2950 5050 2950
-Wire Wire Line
-	3600 2500 3600 3950
-Connection ~ 3600 3950
-Wire Wire Line
-	3600 3950 3750 3950
-Wire Wire Line
-	5050 1350 5050 2950
-Wire Wire Line
-	5050 1350 4750 1350
-Wire Wire Line
-	4950 1450 4950 2500
-Wire Wire Line
-	4750 1450 4950 1450
-Wire Wire Line
-	3600 2500 4950 2500
+	3450 3950 3750 3950
+Text Label 3350 2850 0    50   ~ 0
+MISO
+Text Label 3350 2750 0    50   ~ 0
+MOSI
+Text Label 3350 2950 0    50   ~ 0
+SCK
 $EndSCHEMATC
