@@ -30,3 +30,5 @@ fp-info-cache
 
 *.o
 *.hex
+
+*.pdf

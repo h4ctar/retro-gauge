@@ -1,4 +1,4 @@
-(module Neutral (layer F.Cu) (tedit 612AEBFC)
+(module Neutral (layer F.Cu) (tedit 613F287B)
   (fp_text reference REF** (at 0 2.54) (layer F.SilkS) hide
     (effects (font (size 1 1) (thickness 0.15)))
   )
@@ -12,5 +12,5 @@
     (xy -0.853074 -1.516906) (xy -0.767062 -1.508743) (xy -0.685389 -1.464624) (xy -0.593767 -1.365857)
     (xy -0.477907 -1.193747) (xy -0.323522 -0.929601) (xy -0.116323 -0.554725) (xy 0.157977 -0.050424)
     (xy 0.162374 -0.042333) (xy 0.76055 1.058333) (xy 0.761275 -0.232833) (xy 0.762 -1.524)
-    (xy 1.18907 -1.524) (xy 1.143 1.651)) (layer F.Mask) (width 0.01))
+    (xy 1.18907 -1.524) (xy 1.143 1.651)) (layer F.SilkS) (width 0.01))
 )

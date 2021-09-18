@@ -1,5 +1,5 @@
-(module Oil_Pressure (layer F.Cu) (tedit 612AEC02)
-  (fp_text reference REF** (at 0 2.54) (layer F.SilkS)
+(module Oil_Pressure (layer F.Cu) (tedit 613F2888)
+  (fp_text reference REF** (at 0 2.54) (layer F.SilkS) hide
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (fp_text value Oil_Pressure (at 0 -2.54) (layer F.Fab)
@@ -34,5 +34,5 @@
     (xy -0.779957 -0.426439) (xy -0.762137 -0.566082) (xy -0.762 -0.587043) (xy -0.789825 -0.770981)
     (xy -0.904962 -0.848084) (xy -0.988304 -0.86221) (xy -1.168248 -0.917437) (xy -1.24936 -0.994833)
     (xy -1.220911 -1.050339) (xy -1.076914 -1.083892) (xy -0.796019 -1.09897) (xy -0.599722 -1.100667)
-    (xy -0.250123 -1.094785)) (layer F.Mask) (width 0.01))
+    (xy -0.250123 -1.094785)) (layer F.SilkS) (width 0.01))
 )
