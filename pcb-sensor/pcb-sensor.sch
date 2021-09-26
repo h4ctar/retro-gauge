@@ -70,17 +70,17 @@ F 3 "" H 2700 2000 50  0001 C CNN
 	1    2700 2000
 	0    1    1    0   
 $EndComp
-Text Label 2250 3400 0    50   ~ 0
+Text Label 2250 3500 0    50   ~ 0
 COIL
 Text Label 2250 3100 0    50   ~ 0
 SPEED_GND
-Text Label 2250 3500 0    50   ~ 0
+Text Label 2250 3900 0    50   ~ 0
 TURN_SIGNAL_LEFT
 Text Label 2250 3700 0    50   ~ 0
 OIL_PRESSURE
-Text Label 2250 3800 0    50   ~ 0
+Text Label 2250 3600 0    50   ~ 0
 NEUTRAL
-Text Label 2250 3900 0    50   ~ 0
+Text Label 2250 4100 0    50   ~ 0
 HIGH_BEAM
 $Comp
 L power:+5V #PWR0103
@@ -107,16 +107,14 @@ $EndComp
 $Comp
 L power:+12V #PWR0105
 U 1 1 613DEE20
-P 2350 4100
-F 0 "#PWR0105" H 2350 3950 50  0001 C CNN
-F 1 "+12V" V 2365 4228 50  0000 L CNN
-F 2 "" H 2350 4100 50  0001 C CNN
-F 3 "" H 2350 4100 50  0001 C CNN
-	1    2350 4100
+P 2250 3400
+F 0 "#PWR0105" H 2250 3250 50  0001 C CNN
+F 1 "+12V" V 2265 3528 50  0000 L CNN
+F 2 "" H 2250 3400 50  0001 C CNN
+F 3 "" H 2250 3400 50  0001 C CNN
+	1    2250 3400
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	2150 4100 2350 4100
 Wire Wire Line
 	2150 4200 2250 4200
 Wire Wire Line
@@ -194,7 +192,7 @@ Wire Wire Line
 	7050 1750 7250 1750
 Connection ~ 7250 1750
 Text Label 9750 1800 2    50   ~ 0
-OIL_PRESSURE_12V
+OIL_PRESSURE
 $Comp
 L Device:R R3
 U 1 1 6184DF63
@@ -250,7 +248,7 @@ F 3 "" H 9500 3750 50  0001 C CNN
 	1    9500 3750
 	1    0    0    -1  
 $EndComp
-Text Label 2250 3600 0    50   ~ 0
+Text Label 2250 4000 0    50   ~ 0
 TURN_SIGNAL_RIGHT
 Text Label 9000 2750 2    50   ~ 0
 TURN_SIGNAL_LEFT
@@ -305,7 +303,7 @@ Text Label 7750 3550 0    50   ~ 0
 PD4
 Text Label 7750 5550 0    50   ~ 0
 PD5
-Text Label 2250 4000 0    50   ~ 0
+Text Label 2250 3800 0    50   ~ 0
 KEY_12V
 Text Label 6750 4950 2    50   ~ 0
 KEY_12V
@@ -878,4 +876,6 @@ Wire Wire Line
 	4400 6200 4500 6200
 Wire Wire Line
 	4500 6200 4500 6300
+Wire Wire Line
+	2150 4100 2250 4100
 $EndSCHEMATC
