@@ -185,10 +185,19 @@ The X25 datasheet shows the required pattern to step the motor.
 
 ## PCB Design
 
+There are three PCBs: the main board, the sensor board and the face board.
+The boards are stacked using 12mm standoffs and are connected together with 2.54mm header pins.
+
+The main board has the microcontroller, stepper motor, LCD and real time clock.
+The sensor board has the power supply and the signal conditioning.
+The face board is the dial face and has the LED indicators.
+
 ![Main PCB](./images/pcb-main.png)
 ![Sensor PCB](./images/pcb-sensor.png)
 ![Face PCB](./images/pcb-face.png)
 
 ## Case Design
+
+The case is 3D printed out of ASA.
 
 ![Case](./images/case.png)
