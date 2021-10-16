@@ -185,4 +185,10 @@ The X25 datasheet shows the required pattern to step the motor.
 
 ## PCB Design
 
+![Main PCB](./images/pcb-main.png)
+![Sensor PCB](./images/pcb-sensor.png)
+![Face PCB](./images/pcb-face.png)
+
 ## Case Design
+
+![Case](./images/case.png)
