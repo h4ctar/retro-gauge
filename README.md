@@ -49,6 +49,9 @@ The ATmega328P-PU also has 1024 bytes of EEPROM which can be used to store the c
 
 An external 16 MHz crystal will be used to run the ATmega328P-PU at it's fastest clock speed.
 
+The microcontroller will be programmed with an in-circuit serial programmer (ICSP).
+A bootloader doesnt need to be burned when using ICSP.
+
 The low byte fuses configure the clock:
 
 | Bit | Name   | Description                                | Value |
@@ -88,7 +91,19 @@ The extended fuses:
 | 1   | BODLEVEL1 |                                   | 0     |
 | 0   | BODLEVEL0 |                                   | 1     |
 
-The microcontroller will be programmed with an in-circuit serial programmer (ICSP). A bootloader doesnt need to be burned when using ICSP.
+These fuses can be burned with:
+
+```
+avrdude -v -patmega328p -cstk500v1 -P/dev/ttyACM0 -b19200 -e -Ulock:w:0x3f:m -Uefuse:w:0b11111101:m -Uhfuse:w:0b11010110:m -Ulfuse:w:0b11111111:m
+```
+
+Code can be compiled and loaded with:
+
+```
+avr-gcc -mmcu=atmega328p -DF_CPU=16000000 -omain.o main.c
+avr-objcopy -Oihex -j.text -j.data main.o main.hex
+avrdude -v -patmega328p -cstk500v1 -P/dev/ttyACM0 -b19200 -Uflash:w:main.hex
+```
 
 ## Tachometer
 
@@ -106,6 +121,8 @@ There are some existing Arduino libraries to interface with it.
 It can drive 32 segments by 4 commons which is exactly what is required to drive the selected LCD.
 
 The wiring of the driver to the display is optimised for the PCB layout.
+
+![LCD Segment Names](./images/14seg.png)
 
 This table has the LCD segments from the datasheet and what memory address they are according to the PCB layout:
 
