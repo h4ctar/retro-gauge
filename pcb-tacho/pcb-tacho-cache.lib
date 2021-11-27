@@ -148,6 +148,19 @@ X DIS 7 500 0 150 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
+# pcb-tacho-rescue_TachoCapPlate-symbols
+#
+DEF pcb-tacho-rescue_TachoCapPlate-symbols U 0 40 Y Y 1 F N
+F0 "U" 450 0 50 H V C CNN
+F1 "pcb-tacho-rescue_TachoCapPlate-symbols" 0 0 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+S 550 100 -400 -100 0 1 0 f
+X ~ ~ 650 0 100 L 50 50 1 1 O
+ENDDRAW
+ENDDEF
+#
 # power_+12V
 #
 DEF power_+12V #PWR 0 0 Y Y 1 F P
@@ -188,19 +201,6 @@ F3 "" 0 0 50 H I C CNN
 DRAW
 P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
 X GND 1 0 0 0 D 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# symbols_TachoCapPlate
-#
-DEF symbols_TachoCapPlate U 0 40 Y Y 1 F N
-F0 "U" 450 0 50 H V C CNN
-F1 "symbols_TachoCapPlate" 0 0 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-S 550 100 -400 -100 0 1 0 f
-X ~ ~ 650 0 100 L 50 50 1 1 O
 ENDDRAW
 ENDDEF
 #
