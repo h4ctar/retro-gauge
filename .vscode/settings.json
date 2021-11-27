@@ -4,6 +4,7 @@
         "array": "c",
         "string": "c",
         "string_view": "c",
-        "io.h": "c"
+        "io.h": "c",
+        "neopixel.h": "c"
     }
 }

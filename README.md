@@ -14,6 +14,8 @@ This is an open source motorcycle tacho project with the following features:
 
 It is housed in a classic round casing, with a retro looking 8 digit starburst LCD.
 
+The toolchain is all open source; the PCB's are designed with KiCad and the case is designed in FreeCAD.
+
 ## System Design
 
 The system design is simple, the only interesting decision is that the indicators all go via the microcontroller, this lets us do fun things with the indicators (test them when powered on or reuse the oil pressure indicator for other warnings).
@@ -26,22 +28,22 @@ An ATmega328P-PU microcontroller will be used to process all the inputs, and dri
 
 Here are all the required inputs and outputs:
 
-| Function        | Type           | Number of pins             |
-| --------------- | -------------- | -------------------------- |
-| Tacho           | Digital input  | 1                          |
-| Speedo          | Digital input  | 1                          |
-| Oil pressure    | Digital input  | 1                          |
-| Turn signals    | Digital input  | 2                          |
-| Neutral         | Digital input  | 1                          |
-| High beam       | Digital input  | 1                          |
-| Mode button     | Digital input  | 1                          |
-| Battery voltage | Analog input   | 1                          |
-| Stepper motor   | Digital output | 4 (could be 3)             |
-| RBG LEDs        | Digital output | 1                          |
-| LCD Backlight   | Digital output | 1                          |
-| LCD             | Digital output | 3                          |
-| ISP             | Digital IO     | 3 (can be shared with LCD) |
-| Real time clock | Digital IO     | 2                          |
+| Function        | Type           | Number of pins    |
+| --------------- | -------------- | ----------------- |
+| Tacho           | Digital input  | 1                 |
+| Speedo          | Digital input  | 1                 |
+| Oil pressure    | Digital input  | 1                 |
+| Turn signals    | Digital input  | 2                 |
+| Neutral         | Digital input  | 1                 |
+| High beam       | Digital input  | 1                 |
+| Mode button     | Digital input  | 1                 |
+| Battery voltage | Analog input   | 1                 |
+| Stepper motor   | Digital output | 4 (could be 3)    |
+| RBG LEDs        | Digital output | 1                 |
+| LCD Backlight   | Digital output | 1                 |
+| LCD             | Digital output | 3                 |
+| ISP             | Digital IO     | 3 (can be shared) |
+| Real time clock | Digital IO     | 2                 |
 
 For a total of 19 digital IOs and one analog input, the ATmega328P-PU has more than enough at 23 programmable IO lines.
 
@@ -91,18 +93,37 @@ The extended fuses:
 | 1   | BODLEVEL1 |                                   | 0     |
 | 0   | BODLEVEL0 |                                   | 1     |
 
-These fuses can be burned with:
+There is a simple Makefile that compiles and links the code and has targets to burn the fuses and the code.
+
+## Power Supply
+
+## Indicator Lights
+
+There are indicator lights for low oil pressure, neutral, high beam and turn signals.
+
+The oil pressure and neutral sensors are simple switches to ground.
+So these will be directly connected to digital input pins.
+I'm not sure if the internal pull ups will be good enough so there will be provision on the PCB for external pull up resistors.
+
+![Neutral](./images/neutral.png)
+
+The highbeam and turn signals indicators should light up when they see 12V.
+We'll use an optocoupler to give some extra protection.
+
+![Neutral](./images/turn-signals.png)
 
 ```
-avrdude -v -patmega328p -cstk500v1 -P/dev/ttyACM0 -b19200 -e -Ulock:w:0x3f:m -Uefuse:w:0b11111101:m -Uhfuse:w:0b11010110:m -Ulfuse:w:0b11111111:m
+Diode forward voltage: 0.715V
+Photodiode forward voltage: 1.3V
+Photodiode forward current: 10mA
+R1 = (14V - 0.715V - 1.3V) / 10mA = 1200 ohm ~= 1k ohm
 ```
 
-Code can be compiled and loaded with:
-
 ```
-avr-gcc -mmcu=atmega328p -DF_CPU=16000000 -omain.o main.c
-avr-objcopy -Oihex -j.text -j.data main.o main.hex
-avrdude -v -patmega328p -cstk500v1 -P/dev/ttyACM0 -b19200 -Uflash:w:main.hex
+CTR: 50%
+Output current: 50% of 10mA = 5mA
+Output voltage: 4V
+R2 = (5V - 4V) / 5mA = 200 ohm
 ```
 
 ## Tachometer
@@ -203,11 +224,11 @@ The X25 datasheet shows the required pattern to step the motor.
 ## PCB Design
 
 There are three PCBs: the main board, the sensor board and the face board.
-The boards are stacked using 12mm standoffs and are connected together with 2.54mm header pins.
+The boards are stacked using standoffs and are connected together with 2.54mm stacking header pins.
 
-The main board has the microcontroller, stepper motor, LCD and real time clock.
+The main board has the microcontroller, stepper motor, LCD and real time clock and indicators.
 The sensor board has the power supply and the signal conditioning.
-The face board is the dial face and has the LED indicators.
+The face board is the dial face and has transparent icons for the indicators.
 
 ![Main PCB](./images/pcb-main.png)
 ![Sensor PCB](./images/pcb-sensor.png)

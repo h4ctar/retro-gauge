@@ -6,8 +6,8 @@
 #define LCD_PORT PORTB
 #define LCD_PORT_DDR DDRB
 #define CS_PIN 0b00001000
-#define WR_PIN 0b00010000
-#define DATA_PIN 0b00100000
+#define WR_PIN 0b00000100
+#define DATA_PIN 0b00000010
 
 #define T_CLK 5 // the clock time in micro seconds
 
