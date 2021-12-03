@@ -1,5 +1,5 @@
 #include <avr/io.h>
-#include <util/delay.h>
+// #include <util/delay.h>
 #include <util/atomic.h>
 
 #include "neopixel.h"
@@ -64,7 +64,7 @@ void sendPixels(long pixels[], int size)
     }
 
     // Show
-    _delay_us((RES / 1000UL) + 1);
+    //_delay_us((RES / 1000UL) + 1);
 
     // Enable interrupts
     sei();
