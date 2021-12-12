@@ -175,6 +175,7 @@ F 0 "U1" H 2000 1750 50  0000 C CNN
 F 1 "ATmega328P-AU" H 2000 1600 50  0000 C CNN
 F 2 "Package_QFP:TQFP-32_7x7mm_P0.8mm" H 2050 2600 50  0001 C CIN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20with%20picoPower%20Technology%20Data%20Sheet%2040001984A.pdf" H 2050 2600 50  0001 C CNN
+F 4 "C14877" H 2050 2600 50  0001 C CNN "LCSC"
 	1    2050 2600
 	1    0    0    -1  
 $EndComp
@@ -241,191 +242,169 @@ RESET
 Text Label 3400 2900 0    50   ~ 0
 RESET
 $Comp
-L symbols:HT1621B U2
-U 1 1 612E981B
-P 2000 6100
-F 0 "U2" H 2000 7265 50  0000 C CNN
-F 1 "HT1621B" H 2000 7174 50  0000 C CNN
-F 2 "footprints:HT1621B" H 2000 6100 50  0001 C CNN
-F 3 "" H 2000 6100 50  0001 C CNN
-	1    2000 6100
-	1    0    0    -1  
-$EndComp
-$Comp
 L symbols:VIM878 U3
 U 1 1 612E9821
-P 3850 6250
-F 0 "U3" H 3875 7325 50  0000 C CNN
-F 1 "VIM878" H 3875 7234 50  0000 C CNN
-F 2 "footprints:VIM878" H 3850 6150 50  0001 C CNN
-F 3 "" H 3850 6150 50  0001 C CNN
-	1    3850 6250
+P 5000 6250
+F 0 "U3" H 5025 7325 50  0000 C CNN
+F 1 "VIM878" H 5025 7234 50  0000 C CNN
+F 2 "footprints:VIM878" H 5000 6150 50  0001 C CNN
+F 3 "" H 5000 6150 50  0001 C CNN
+	1    5000 6250
 	1    0    0    -1  
 $EndComp
-Text Label 2600 5200 0    50   ~ 0
+Text Label 3050 5250 1    50   ~ 0
 SEG8
-Text Label 2600 5300 0    50   ~ 0
+Text Label 3150 5250 1    50   ~ 0
 SEG9
-Text Label 2600 5400 0    50   ~ 0
+Text Label 3250 5250 1    50   ~ 0
 SEG10
-Text Label 2600 5500 0    50   ~ 0
+Text Label 3350 5250 1    50   ~ 0
 SEG11
-Text Label 2600 5600 0    50   ~ 0
+Text Label 3750 5650 0    50   ~ 0
 SEG12
-Text Label 2600 5700 0    50   ~ 0
+Text Label 3750 5750 0    50   ~ 0
 SEG13
-Text Label 2600 5800 0    50   ~ 0
+Text Label 3750 5850 0    50   ~ 0
 SEG14
-Text Label 2600 5900 0    50   ~ 0
+Text Label 3750 5950 0    50   ~ 0
 SEG15
-Text Label 2600 6000 0    50   ~ 0
+Text Label 3750 6050 0    50   ~ 0
 SEG16
-Text Label 2600 6100 0    50   ~ 0
+Text Label 3750 6150 0    50   ~ 0
 SEG17
-Text Label 2600 6200 0    50   ~ 0
+Text Label 3750 6250 0    50   ~ 0
 SEG18
-Text Label 2600 6300 0    50   ~ 0
+Text Label 3750 6350 0    50   ~ 0
 SEG19
-Text Label 2600 6400 0    50   ~ 0
+Text Label 3750 6450 0    50   ~ 0
 SEG20
-Text Label 2600 6500 0    50   ~ 0
+Text Label 3750 6550 0    50   ~ 0
 SEG21
-Text Label 2600 6600 0    50   ~ 0
+Text Label 3750 6650 0    50   ~ 0
 SEG22
-Text Label 2600 6700 0    50   ~ 0
+Text Label 3750 6750 0    50   ~ 0
 SEG23
-Text Label 2600 6800 0    50   ~ 0
+Text Label 3350 7150 3    50   ~ 0
 SEG24
-Text Label 2600 6900 0    50   ~ 0
+Text Label 3250 7150 3    50   ~ 0
 SEG25
-Text Label 2600 7000 0    50   ~ 0
+Text Label 3150 7150 3    50   ~ 0
 SEG26
-Text Label 2600 7100 0    50   ~ 0
+Text Label 2950 7150 3    50   ~ 0
 SEG27
-Text Label 2600 7200 0    50   ~ 0
+Text Label 3050 7150 3    50   ~ 0
 SEG28
-Text Label 2600 7300 0    50   ~ 0
+Text Label 2850 7150 3    50   ~ 0
 SEG29
-Text Label 2600 7400 0    50   ~ 0
+Text Label 2750 7150 3    50   ~ 0
 SEG30
-Text Label 2600 7500 0    50   ~ 0
+Text Label 2650 7150 3    50   ~ 0
 SEG31
-Text Label 1400 5200 2    50   ~ 0
+Text Label 2950 5250 1    50   ~ 0
 SEG7
-Text Label 1400 5300 2    50   ~ 0
+Text Label 2850 5250 1    50   ~ 0
 SEG6
-Text Label 1400 5400 2    50   ~ 0
+Text Label 2750 5250 1    50   ~ 0
 SEG5
-Text Label 1400 5500 2    50   ~ 0
+Text Label 2650 5250 1    50   ~ 0
 SEG4
-Text Label 1400 5600 2    50   ~ 0
+Text Label 2550 5250 1    50   ~ 0
 SEG3
-Text Label 1400 5700 2    50   ~ 0
+Text Label 2450 5250 1    50   ~ 0
 SEG2
-Text Label 1400 5800 2    50   ~ 0
+Text Label 2350 5250 1    50   ~ 0
 SEG1
-Text Label 1400 5900 2    50   ~ 0
+Text Label 2250 5250 1    50   ~ 0
 SEG0
-Text Label 3300 5400 2    50   ~ 0
+Text Label 5600 6200 0    50   ~ 0
 SEG8
-Text Label 3300 5500 2    50   ~ 0
+Text Label 5600 6300 0    50   ~ 0
 SEG9
-Text Label 3300 5600 2    50   ~ 0
+Text Label 5600 6400 0    50   ~ 0
 SEG10
-Text Label 3300 5700 2    50   ~ 0
+Text Label 5600 6500 0    50   ~ 0
 SEG11
-Text Label 3300 5800 2    50   ~ 0
+Text Label 5600 6600 0    50   ~ 0
 SEG12
-Text Label 3300 5900 2    50   ~ 0
+Text Label 5600 6700 0    50   ~ 0
 SEG13
-Text Label 3300 6000 2    50   ~ 0
+Text Label 5600 6800 0    50   ~ 0
 SEG14
-Text Label 3300 6100 2    50   ~ 0
+Text Label 5600 6900 0    50   ~ 0
 SEG15
-Text Label 3300 6200 2    50   ~ 0
+Text Label 5600 6100 0    50   ~ 0
 SEG7
-Text Label 3300 6300 2    50   ~ 0
+Text Label 5600 6000 0    50   ~ 0
 SEG6
-Text Label 3300 6400 2    50   ~ 0
+Text Label 5600 5900 0    50   ~ 0
 SEG5
-Text Label 3300 6500 2    50   ~ 0
+Text Label 5600 5800 0    50   ~ 0
 SEG4
-Text Label 3300 6600 2    50   ~ 0
+Text Label 5600 5700 0    50   ~ 0
 SEG3
-Text Label 3300 6700 2    50   ~ 0
+Text Label 5600 5600 0    50   ~ 0
 SEG2
-Text Label 3300 6800 2    50   ~ 0
+Text Label 5600 5500 0    50   ~ 0
 SEG1
-Text Label 3300 6900 2    50   ~ 0
+Text Label 5600 5400 0    50   ~ 0
 SEG0
-Text Label 4450 5400 0    50   ~ 0
+Text Label 4450 6900 2    50   ~ 0
 SEG16
-Text Label 4450 5500 0    50   ~ 0
+Text Label 4450 6800 2    50   ~ 0
 SEG17
-Text Label 4450 5600 0    50   ~ 0
+Text Label 4450 6700 2    50   ~ 0
 SEG18
-Text Label 4450 5700 0    50   ~ 0
+Text Label 4450 6600 2    50   ~ 0
 SEG19
-Text Label 4450 5800 0    50   ~ 0
+Text Label 4450 6500 2    50   ~ 0
 SEG20
-Text Label 4450 5900 0    50   ~ 0
+Text Label 4450 6400 2    50   ~ 0
 SEG21
-Text Label 4450 6000 0    50   ~ 0
+Text Label 4450 6300 2    50   ~ 0
 SEG22
-Text Label 4450 6100 0    50   ~ 0
+Text Label 4450 6200 2    50   ~ 0
 SEG23
-Text Label 4450 6200 0    50   ~ 0
+Text Label 4450 6100 2    50   ~ 0
 SEG24
-Text Label 4450 6300 0    50   ~ 0
+Text Label 4450 6000 2    50   ~ 0
 SEG25
-Text Label 4450 6400 0    50   ~ 0
+Text Label 4450 5900 2    50   ~ 0
 SEG26
-Text Label 4450 6500 0    50   ~ 0
+Text Label 4450 5700 2    50   ~ 0
 SEG27
-Text Label 4450 6600 0    50   ~ 0
+Text Label 4450 5800 2    50   ~ 0
 SEG28
-Text Label 4450 6700 0    50   ~ 0
+Text Label 4450 5600 2    50   ~ 0
 SEG29
-Text Label 4450 6800 0    50   ~ 0
+Text Label 4450 5500 2    50   ~ 0
 SEG30
-Text Label 4450 6900 0    50   ~ 0
+Text Label 4450 5400 2    50   ~ 0
 SEG31
-Text Label 1400 7200 2    50   ~ 0
+Text Label 2250 7150 3    50   ~ 0
 COM0
-Text Label 1400 7300 2    50   ~ 0
+Text Label 2350 7150 3    50   ~ 0
 COM1
-Text Label 1400 7400 2    50   ~ 0
+Text Label 2450 7150 3    50   ~ 0
 COM2
-Text Label 1400 7500 2    50   ~ 0
+Text Label 2550 7150 3    50   ~ 0
 COM3
-Text Label 3300 7000 2    50   ~ 0
+Text Label 4450 7000 2    50   ~ 0
 COM0
-Text Label 3300 7100 2    50   ~ 0
+Text Label 4450 7100 2    50   ~ 0
 COM1
-Text Label 4450 7000 0    50   ~ 0
+Text Label 5600 7100 0    50   ~ 0
 COM2
-Text Label 4450 7100 0    50   ~ 0
+Text Label 5600 7000 0    50   ~ 0
 COM3
-$Comp
-L power:GND #PWR0108
-U 1 1 612E9872
-P 1300 6400
-F 0 "#PWR0108" H 1300 6150 50  0001 C CNN
-F 1 "GND" H 1305 6227 50  0000 C CNN
-F 2 "" H 1300 6400 50  0001 C CNN
-F 3 "" H 1300 6400 50  0001 C CNN
-	1    1300 6400
-	0    1    1    0   
-$EndComp
 $Comp
 L power:+5V #PWR0109
 U 1 1 612E987D
-P 900 6600
-F 0 "#PWR0109" H 900 6450 50  0001 C CNN
-F 1 "+5V" H 915 6773 50  0000 C CNN
-F 2 "" H 900 6600 50  0001 C CNN
-F 3 "" H 900 6600 50  0001 C CNN
-	1    900  6600
+P 1350 6250
+F 0 "#PWR0109" H 1350 6100 50  0001 C CNN
+F 1 "+5V" H 1365 6423 50  0000 C CNN
+F 2 "" H 1350 6250 50  0001 C CNN
+F 3 "" H 1350 6250 50  0001 C CNN
+	1    1350 6250
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -526,8 +505,6 @@ Text Label 2650 2600 0    50   ~ 0
 MOT_3
 Text Label 2650 2300 0    50   ~ 0
 MOT_2
-Wire Wire Line
-	1400 6400 1300 6400
 $Comp
 L power:+5V #PWR?
 U 1 1 613D3197
@@ -567,13 +544,13 @@ Text Label 2650 1800 0    50   ~ 0
 PB4
 Text Label 2650 1700 0    50   ~ 0
 PB3
-Text Label 1400 6000 2    50   ~ 0
+Text Label 1850 5950 2    50   ~ 0
 PB3
-Text Label 1400 6200 2    50   ~ 0
+Text Label 1850 5850 2    50   ~ 0
 PB4
-Text Label 1400 6300 2    50   ~ 0
+Text Label 1850 5650 2    50   ~ 0
 PB5
-Text Notes 2650 4900 0    50   ~ 0
+Text Notes 3800 4900 0    50   ~ 0
 LCD
 Text Notes 6250 1000 0    50   ~ 0
 ISP
@@ -672,9 +649,10 @@ L Device:C C1
 U 1 1 614BF38E
 P 1100 1150
 F 0 "C1" H 1215 1196 50  0000 L CNN
-F 1 "0.1u" H 1215 1105 50  0000 L CNN
+F 1 "100n" H 1215 1105 50  0000 L CNN
 F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" H 1138 1000 50  0001 C CNN
 F 3 "~" H 1100 1150 50  0001 C CNN
+F 4 "" H 1100 1150 50  0001 C CNN "LCSC"
 	1    1100 1150
 	1    0    0    -1  
 $EndComp
@@ -783,27 +761,28 @@ $EndComp
 $Comp
 L Device:C C4
 U 1 1 6167E0BA
-P 900 7050
-F 0 "C4" H 1015 7096 50  0000 L CNN
-F 1 "C" H 1015 7005 50  0000 L CNN
-F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" H 938 6900 50  0001 C CNN
-F 3 "~" H 900 7050 50  0001 C CNN
-	1    900  7050
+P 1350 6700
+F 0 "C4" H 1465 6746 50  0000 L CNN
+F 1 "100n" H 1465 6655 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" H 1388 6550 50  0001 C CNN
+F 3 "~" H 1350 6700 50  0001 C CNN
+F 4 "" H 1350 6700 50  0001 C CNN "LCSC"
+	1    1350 6700
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR0107
 U 1 1 61685286
-P 900 7300
-F 0 "#PWR0107" H 900 7050 50  0001 C CNN
-F 1 "GND" H 905 7127 50  0000 C CNN
-F 2 "" H 900 7300 50  0001 C CNN
-F 3 "" H 900 7300 50  0001 C CNN
-	1    900  7300
+P 1350 6950
+F 0 "#PWR0107" H 1350 6700 50  0001 C CNN
+F 1 "GND" H 1355 6777 50  0000 C CNN
+F 2 "" H 1350 6950 50  0001 C CNN
+F 3 "" H 1350 6950 50  0001 C CNN
+	1    1350 6950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	900  7300 900  7200
+	1350 6950 1350 6850
 Wire Wire Line
 	6100 3450 6350 3450
 Wire Wire Line
@@ -818,6 +797,7 @@ F 0 "D9" H 7600 3850 50  0000 L CNN
 F 1 "WS2812B" H 7600 3350 50  0000 L CNN
 F 2 "LED_SMD:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm" H 7600 3300 50  0001 L TNN
 F 3 "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf" H 7650 3225 50  0001 L TNN
+F 4 "C2761795" H 7550 3600 50  0001 C CNN "LCSC"
 	1    7550 3600
 	1    0    0    -1  
 $EndComp
@@ -829,6 +809,7 @@ F 0 "D10" H 8200 3850 50  0000 L CNN
 F 1 "WS2812B" H 8200 3350 50  0000 L CNN
 F 2 "LED_SMD:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm" H 8200 3300 50  0001 L TNN
 F 3 "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf" H 8250 3225 50  0001 L TNN
+F 4 "C2761795" H 8150 3600 50  0001 C CNN "LCSC"
 	1    8150 3600
 	1    0    0    -1  
 $EndComp
@@ -840,6 +821,7 @@ F 0 "D11" H 8800 3850 50  0000 L CNN
 F 1 "WS2812B" H 8800 3350 50  0000 L CNN
 F 2 "LED_SMD:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm" H 8800 3300 50  0001 L TNN
 F 3 "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf" H 8850 3225 50  0001 L TNN
+F 4 "C2761795" H 8750 3600 50  0001 C CNN "LCSC"
 	1    8750 3600
 	1    0    0    -1  
 $EndComp
@@ -851,6 +833,7 @@ F 0 "D12" H 9400 3850 50  0000 L CNN
 F 1 "WS2812B" H 9400 3350 50  0000 L CNN
 F 2 "LED_SMD:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm" H 9400 3300 50  0001 L TNN
 F 3 "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf" H 9450 3225 50  0001 L TNN
+F 4 "C2761795" H 9350 3600 50  0001 C CNN "LCSC"
 	1    9350 3600
 	1    0    0    -1  
 $EndComp
@@ -862,6 +845,7 @@ F 0 "D13" H 10000 3850 50  0000 L CNN
 F 1 "WS2812B" H 10000 3350 50  0000 L CNN
 F 2 "LED_SMD:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm" H 10000 3300 50  0001 L TNN
 F 3 "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf" H 10050 3225 50  0001 L TNN
+F 4 "C2761795" H 9950 3600 50  0001 C CNN "LCSC"
 	1    9950 3600
 	1    0    0    -1  
 $EndComp
@@ -873,6 +857,7 @@ F 0 "D14" H 10600 3850 50  0000 L CNN
 F 1 "WS2812B" H 10600 3350 50  0000 L CNN
 F 2 "LED_SMD:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm" H 10600 3300 50  0001 L TNN
 F 3 "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf" H 10650 3225 50  0001 L TNN
+F 4 "C2761795" H 10550 3600 50  0001 C CNN "LCSC"
 	1    10550 3600
 	1    0    0    -1  
 $EndComp
@@ -1023,30 +1008,30 @@ $EndComp
 Text Label 7250 3600 2    50   ~ 0
 PB2
 Wire Wire Line
-	900  6700 900  6800
-Connection ~ 900  6800
+	1350 6350 1350 6450
+Connection ~ 1350 6450
 Wire Wire Line
-	900  6800 900  6900
+	1350 6450 1350 6550
 $Comp
 L Device:R R1
 U 1 1 619DCC9F
-P 1150 6700
-F 0 "R1" V 1250 6850 50  0000 R CNN
-F 1 "10k" V 1250 6700 50  0000 R CNN
-F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" V 1080 6700 50  0001 C CNN
-F 3 "~" H 1150 6700 50  0001 C CNN
-	1    1150 6700
+P 1600 6350
+F 0 "R1" V 1700 6500 50  0000 R CNN
+F 1 "10k" V 1700 6350 50  0000 R CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" V 1530 6350 50  0001 C CNN
+F 3 "~" H 1600 6350 50  0001 C CNN
+	1    1600 6350
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	900  6800 1400 6800
+	1350 6450 1850 6450
 Wire Wire Line
-	1400 6700 1300 6700
+	1850 6350 1750 6350
 Wire Wire Line
-	1000 6700 900  6700
+	1450 6350 1350 6350
 Wire Wire Line
-	900  6700 900  6600
-Connection ~ 900  6700
+	1350 6350 1350 6250
+Connection ~ 1350 6350
 $Comp
 L Timer_RTC:PCF8563T U4
 U 1 1 61A482C8
@@ -1055,6 +1040,7 @@ F 0 "U4" H 8750 6000 50  0000 C CNN
 F 1 "PCF8563T" H 8250 6000 50  0000 C CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 8550 5550 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/PCF8563.pdf" H 8550 5550 50  0001 C CNN
+F 4 "C7440" H 8550 5550 50  0001 C CNN "LCSC"
 	1    8550 5550
 	1    0    0    -1  
 $EndComp
@@ -1098,8 +1084,8 @@ L Device:Crystal Y2
 U 1 1 61A72108
 P 7700 5550
 F 0 "Y2" V 7654 5681 50  0000 L CNN
-F 1 "Crystal" V 7745 5681 50  0000 L CNN
-F 2 "Crystal:Crystal_SMD_EuroQuartz_EQ161-2Pin_3.2x1.5mm_HandSoldering" H 7700 5550 50  0001 C CNN
+F 1 "32kHz" V 7745 5681 50  0000 L CNN
+F 2 "Crystal:Crystal_C26-LF_D2.1mm_L6.5mm_Horizontal" H 7700 5550 50  0001 C CNN
 F 3 "~" H 7700 5550 50  0001 C CNN
 	1    7700 5550
 	0    1    1    0   
@@ -1115,7 +1101,7 @@ L Device:R R2
 U 1 1 61A7CA87
 P 9050 6000
 F 0 "R2" H 9120 6046 50  0000 L CNN
-F 1 "R" H 9120 5955 50  0000 L CNN
+F 1 "10k" H 9120 5955 50  0000 L CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" V 8980 6000 50  0001 C CNN
 F 3 "~" H 9050 6000 50  0001 C CNN
 	1    9050 6000
@@ -1145,7 +1131,7 @@ L Device:D D16
 U 1 1 61A86A6A
 P 9150 4950
 F 0 "D16" H 9150 5167 50  0000 C CNN
-F 1 "D" H 9150 5076 50  0000 C CNN
+F 1 "1N4001" H 9150 5076 50  0000 C CNN
 F 2 "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 9150 4950 50  0001 C CNN
 F 3 "~" H 9150 4950 50  0001 C CNN
 	1    9150 4950
@@ -1155,8 +1141,8 @@ $Comp
 L Device:D D15
 U 1 1 61A86D8C
 P 8900 4700
-F 0 "D15" V 8946 4620 50  0000 R CNN
-F 1 "D" V 8855 4620 50  0000 R CNN
+F 0 "D15" V 8950 5000 50  0000 R CNN
+F 1 "1N4001" V 8850 5050 50  0000 R CNN
 F 2 "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 8900 4700 50  0001 C CNN
 F 3 "~" H 8900 4700 50  0001 C CNN
 	1    8900 4700
@@ -1191,36 +1177,30 @@ Connection ~ 8900 4950
 $Comp
 L Device:C C5
 U 1 1 61B2297C
-P 9750 4700
-F 0 "C5" H 9865 4746 50  0000 L CNN
-F 1 "100n" H 9865 4655 50  0000 L CNN
-F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" H 9788 4550 50  0001 C CNN
-F 3 "~" H 9750 4700 50  0001 C CNN
-	1    9750 4700
+P 7300 5150
+F 0 "C5" H 7415 5196 50  0000 L CNN
+F 1 "100n" H 7415 5105 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" H 7338 5000 50  0001 C CNN
+F 3 "~" H 7300 5150 50  0001 C CNN
+F 4 "" H 7300 5150 50  0001 C CNN "LCSC"
+	1    7300 5150
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 61B2388C
-P 9750 4850
+P 7300 5300
 AR Path="/612034C5/61B2388C" Ref="#PWR?"  Part="1" 
 AR Path="/61B2388C" Ref="#PWR0131"  Part="1" 
-F 0 "#PWR0131" H 9750 4600 50  0001 C CNN
-F 1 "GND" H 9755 4677 50  0000 C CNN
-F 2 "" H 9750 4850 50  0001 C CNN
-F 3 "" H 9750 4850 50  0001 C CNN
-	1    9750 4850
+F 0 "#PWR0131" H 7300 5050 50  0001 C CNN
+F 1 "GND" H 7305 5127 50  0000 C CNN
+F 2 "" H 7300 5300 50  0001 C CNN
+F 3 "" H 7300 5300 50  0001 C CNN
+	1    7300 5300
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9750 4550 9750 4500
-Wire Wire Line
-	9750 4500 8900 4500
-Wire Wire Line
-	8900 4500 8900 4450
-Wire Wire Line
-	8900 4500 8900 4550
-Connection ~ 8900 4500
+	7300 5000 7300 4950
 Text Label 2650 2800 0    50   ~ 0
 PC5
 Text Label 2650 2700 0    50   ~ 0
@@ -1237,6 +1217,7 @@ F 0 "SW1" H 4350 1250 50  0000 C CNN
 F 1 "SW_MEC_5E" H 4350 1350 50  0000 C CNN
 F 2 "footprints:TS_1187A" H 4350 1750 50  0001 C CNN
 F 3 "http://www.apem.com/int/index.php?controller=attachment&id_attachment=1371" H 4350 1750 50  0001 C CNN
+F 4 "C318884" H 4350 1450 50  0001 C CNN "LCSC"
 	1    4350 1450
 	1    0    0    -1  
 $EndComp
@@ -1309,4 +1290,34 @@ Wire Wire Line
 Connection ~ 4650 1450
 Text Notes 4250 1000 0    50   ~ 0
 Mode button
+Wire Wire Line
+	8900 4450 8900 4550
+Wire Wire Line
+	7300 4950 8550 4950
+Connection ~ 8550 4950
+Wire Wire Line
+	1850 6050 1750 6050
+$Comp
+L power:GND #PWR0108
+U 1 1 612E9872
+P 1750 6050
+F 0 "#PWR0108" H 1750 5800 50  0001 C CNN
+F 1 "GND" H 1755 5877 50  0000 C CNN
+F 2 "" H 1750 6050 50  0001 C CNN
+F 3 "" H 1750 6050 50  0001 C CNN
+	1    1750 6050
+	0    1    1    0   
+$EndComp
+$Comp
+L symbols:HT1621B-LQFP-A U2
+U 1 1 612E981B
+P 2750 6250
+F 0 "U2" H 2750 6350 50  0000 C CNN
+F 1 "HT1621B-LQFP-A" H 2750 6250 50  0000 C CNN
+F 2 "Package_QFP:LQFP-48_7x7mm_P0.5mm" H 2750 6250 50  0001 C CNN
+F 3 "" H 2750 6250 50  0001 C CNN
+F 4 "C7532" H 2750 6250 50  0001 C CNN "LCSC"
+	1    2750 6250
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

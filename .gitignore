@@ -33,3 +33,8 @@ fp-info-cache
 
 *.pdf
 *.zip
+.vim
+compile_commands.json
+.cache
+*.gbr
+*.drl

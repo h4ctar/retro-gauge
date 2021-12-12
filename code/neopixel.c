@@ -127,3 +127,4 @@ inline void sendBit(unsigned char bitVal)
     // Here I have been generous and not tried to squeeze the gap tight but instead erred on the side of lots of extra time.
     // This has thenice side effect of avoid glitches on very long strings becuase
 }
+
