@@ -20,9 +20,9 @@ burn: main.hex
 	avrdude -c ${PROGRAMMER} -p ${MCU} -Uflash:w:main.hex
 
 fuses:
-	avrdude –c ${PROGRAMMER} -p ${MCU} -v -U lfuse:w:${LFUSE}:m
-	avrdude –c ${PROGRAMMER} -p ${MCU} -v -U hfuse:w:${HFUSE}:m
-	avrdude –c ${PROGRAMMER} -p ${MCU} -v -U efuse:w:${EFUSE}:m
+	avrdude -c ${PROGRAMMER} -p ${MCU} -v -U lfuse:w:${LFUSE}:m
+	avrdude -c ${PROGRAMMER} -p ${MCU} -v -U hfuse:w:${HFUSE}:m
+	avrdude -c ${PROGRAMMER} -p ${MCU} -v -U efuse:w:${EFUSE}:m
 
 .c.o:
 	${CC} ${CFLAGS} ${INCLUDES}-c $<

@@ -1,5 +1,7 @@
+#define __DELAY_BACKWARD_COMPATIBLE__
+
 #include <avr/io.h>
-// #include <util/delay.h>
+#include <util/delay.h>
 #include <util/atomic.h>
 
 #include "neopixel.h"
@@ -11,9 +13,9 @@
  https://wp.josh.com/2014/05/13/ws2812-neopixels-are-not-so-finicky-once-you-get-to-know-them/
 */
 
-#define PIXEL_PORT PORTD // Port of the pin the pixels are connected to
-#define PIXEL_DDR DDRD   // Port of the pin the pixels are connected to
-#define PIXEL_BIT 0      // Bit of the pin the pixels are connected to
+#define PIXEL_PORT PORTB // Port of the pin the pixels are connected to
+#define PIXEL_DDR DDRB   // Port of the pin the pixels are connected to
+#define PIXEL_BIT 2      // Bit of the pin the pixels are connected to
 
 // These are the timing constraints taken mostly from the WS2812 datasheets
 // These are chosen to be conservative and avoid problems rather than for maximum throughput
@@ -64,7 +66,7 @@ void sendPixels(long pixels[], int size)
     }
 
     // Show
-    //_delay_us((RES / 1000UL) + 1);
+    _delay_us((RES / 1000UL) + 1);
 
     // Enable interrupts
     sei();
