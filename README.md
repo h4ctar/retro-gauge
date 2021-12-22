@@ -149,42 +149,42 @@ This table has the LCD segments from the datasheet and what memory address they 
 
 | LCD Pin | COM0 | COM1 | COM2 | COM3 | Memory address |
 | ------- | ---- | ---- | ---- | ---- | -------------- |
-| 1       | 1D   | 1E   | 1F   | CA1  | 4              |
-| 2       | 1L   | 1K   | 1J   | 1I   | 2              |
-| 3       | 2D   | 2E   | 2F   | CA2  | 0              |
-| 4       | 2L   | 2K   | 2J   | 2I   |                |
-| 5       | 3D   | 3E   | 3F   | CA3  |                |
-| 6       | 3L   | 3K   | 3J   | 3I   |                |
-| 7       | 4D   | 4E   | 4F   | CA4  |                |
-| 8       | 4L   | 4K   | 4J   | 4I   |                |
-| 9       | 5D   | 5E   | 5F   | CA5  |                |
-| 10      | 5L   | 5K   | 5J   | 5I   |                |
-| 11      | 6D   | 6E   | 6F   | CA6  |                |
-| 12      | 6L   | 6K   | 6J   | 6I   |                |
-| 13      | 7D   | 7E   | 7F   | CA7  |                |
-| 14      | 7L   | 7K   | 7J   | 7I   |                |
-| 15      | 8D   | 8E   | 8F   | CA8  |                |
-| 16      | 8L   | 8K   | 8J   | 8I   |                |
+| 1       | 1D   | 1E   | 1F   | CA1  | 31             |
+| 2       | 1L   | 1K   | 1J   | 1I   | 30             |
+| 3       | 2D   | 2E   | 2F   | CA2  | 29             |
+| 4       | 2L   | 2K   | 2J   | 2I   | 27             |
+| 5       | 3D   | 3E   | 3F   | CA3  | 28             |
+| 6       | 3L   | 3K   | 3J   | 3I   | 26             |
+| 7       | 4D   | 4E   | 4F   | CA4  | 25             |
+| 8       | 4L   | 4K   | 4J   | 4I   | 24             |
+| 9       | 5D   | 5E   | 5F   | CA5  | 23             |
+| 10      | 5L   | 5K   | 5J   | 5I   | 22             |
+| 11      | 6D   | 6E   | 6F   | CA6  | 21             |
+| 12      | 6L   | 6K   | 6J   | 6I   | 20             |
+| 13      | 7D   | 7E   | 7F   | CA7  | 19             |
+| 14      | 7L   | 7K   | 7J   | 7I   | 18             |
+| 15      | 8D   | 8E   | 8F   | CA8  | 17             |
+| 16      | 8L   | 8K   | 8J   | 8I   | 16             |
 | 17      | COM0 |      |      |      |                |
 | 18      |      | COM1 |      |      |                |
 | 19      |      |      | COM2 |      |                |
 | 20      |      |      |      | COM3 |                |
-| 21      | DP8  | 8C   | 8B   | 8A   |                |
-| 22      | 8M   | 8N   | 8G   | 8H   |                |
-| 23      | DP7  | 7C   | 7B   | 7A   |                |
-| 24      | 7M   | 7N   | 7G   | 7H   | 30             |
-| 25      | DP6  | 6C   | 6B   | 6A   | 28             |
-| 26      | 6M   | 6N   | 6G   | 6H   | 26             |
-| 27      | DP5  | 5C   | 5B   | 5A   | 24             |
-| 28      | 5M   | 5N   | 5G   | 5H   | 22             |
-| 29      | DP4  | 4C   | 4B   | 4A   | 20             |
-| 30      | 4M   | 4N   | 4G   | 4H   | 18             |
-| 31      | DP3  | 3C   | 3B   | 3A   | 16             |
-| 32      | 3M   | 3N   | 3G   | 3H   | 14             |
-| 33      | DP2  | 2C   | 2B   | 2A   | 12             |
-| 34      | 2M   | 2N   | 2G   | 2H   | 10             |
-| 35      | DP1  | 1C   | 1B   | 1A   | 8              |
-| 36      | 1M   | 1N   | 1G   | 1H   | 6              |
+| 21      | DP8  | 8C   | 8B   | 8A   | 15             |
+| 22      | 8M   | 8N   | 8G   | 8H   | 14             |
+| 23      | DP7  | 7C   | 7B   | 7A   | 13             |
+| 24      | 7M   | 7N   | 7G   | 7H   | 12             |
+| 25      | DP6  | 6C   | 6B   | 6A   | 11             |
+| 26      | 6M   | 6N   | 6G   | 6H   | 10             |
+| 27      | DP5  | 5C   | 5B   | 5A   | 9              |
+| 28      | 5M   | 5N   | 5G   | 5H   | 8              |
+| 29      | DP4  | 4C   | 4B   | 4A   | 7              |
+| 30      | 4M   | 4N   | 4G   | 4H   | 6              |
+| 31      | DP3  | 3C   | 3B   | 3A   | 5              |
+| 32      | 3M   | 3N   | 3G   | 3H   | 4              |
+| 33      | DP2  | 2C   | 2B   | 2A   | 3              |
+| 34      | 2M   | 2N   | 2G   | 2H   | 2              |
+| 35      | DP1  | 1C   | 1B   | 1A   | 1              |
+| 36      | 1M   | 1N   | 1G   | 1H   | 0              |
 
 From this table we can see that each digit is powered by 4 LCD pins that map to 4 memory addresses. For example segment 1 is LCD pins 1, 2, 35 and 36, which map to memory address' 4, 2, 8 and 6.
 
@@ -192,22 +192,24 @@ The font maps ASCII characters to the segments in order CA,F,E,D,I,J,K,L,A,B,C,D
 The segments are in this order so the nibbles match the memory layout of the driver.
 This gives us one unsigned short for each character so the entire font takes up 512 bytes.
 
-| Character | Segments    | Segments           |
-| --------- | ----------- | ------------------ |
-| 0         | A,B,C,D,E,F | 0b0111000011100000 |
 
 The address mapping maps digits to the 4 memory addresses that the font nibbles should be written to.
 
+DP,C,B,A
+D,E,F,CA 
+L,K,J,I
+M,N,G,H
+
 | Digit | Address'   |
 | ----- | ---------- |
-| 1     | 4, 2, 8, 6 |
-| 2     | 0, 1,12,10 |
-| 3     | 1, 1,16,14 |
-| 4     | 1, 1,20,18 |
-| 5     | 1, 1,24,22 |
-| 6     | 1, 1,28,26 |
-| 7     | 1, 1,30,28 |
-| 8     | 1, 1, 1, 1 |
+| 1     |  1,31,30, 0|
+| 2     |  3,29,27, 2|
+| 3     |  5,28,26, 4|
+| 4     |  7,25,24, 6|
+| 5     |  9,23,22, 8|
+| 6     | 11,21,20,10|
+| 7     | 13,19,18,12|
+| 8     | 15,17,16,14|
 
 This font table and address mapping should be enough to display text on the LCD.
 
