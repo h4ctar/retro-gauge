@@ -40,7 +40,6 @@ Here are all the required inputs and outputs:
 | Battery voltage | Analog input   | 1                 |
 | Stepper motor   | Digital output | 4 (could be 3)    |
 | RBG LEDs        | Digital output | 1                 |
-| LCD Backlight   | Digital output | 1                 |
 | LCD             | Digital output | 3                 |
 | ISP             | Digital IO     | 3 (can be shared) |
 | Real time clock | Digital IO     | 2                 |
@@ -186,19 +185,13 @@ This table has the LCD segments from the datasheet and what memory address they 
 | 35      | DP1  | 1C   | 1B   | 1A   | 1              |
 | 36      | 1M   | 1N   | 1G   | 1H   | 0              |
 
-From this table we can see that each digit is powered by 4 LCD pins that map to 4 memory addresses. For example segment 1 is LCD pins 1, 2, 35 and 36, which map to memory address' 4, 2, 8 and 6.
+From this table we can see that each digit is powered by 4 LCD pins that map to 4 memory addresses.
+For example digit 1 is LCD pins 35, 1, 2 and 36, which map to memory address' 1, 31, 30 and 0.
 
 The font maps ASCII characters to the segments in order CA,F,E,D,I,J,K,L,A,B,C,DP,H,G,N,M.
 The segments are in this order so the nibbles match the memory layout of the driver.
-This gives us one unsigned short for each character so the entire font takes up 512 bytes.
-
 
 The address mapping maps digits to the 4 memory addresses that the font nibbles should be written to.
-
-DP,C,B,A
-D,E,F,CA 
-L,K,J,I
-M,N,G,H
 
 | Digit | Address'   |
 | ----- | ---------- |

@@ -1,4 +1,4 @@
-OBJS=main.o
+OBJS=main.o lcd.o
 
 PROGRAMMER=usbtiny
 ARCH=avr

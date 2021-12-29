@@ -1,4 +1,4 @@
-OBJS=main.o motor.o neopixel.o
+OBJS=main.o motor.o led.o lcd.o
 
 PROGRAMMER=usbtiny
 ARCH=avr
@@ -8,7 +8,7 @@ HFUSE=0b11010110
 EFUSE=0b11111101
 
 CC=clang
-CFLAGS=-Wall --target=${ARCH} -mmcu=${MCU} -O -isystem /usr/avr/include -DF_CPU=16000000 -D__AVR_ATmega328P__
+CFLAGS=-Wall --target=${ARCH} -mmcu=${MCU} -O -isystem /usr/avr/include -DF_CPU=16000000 -D__AVR_ATmega328P__ -D__DELAY_BACKWARD_COMPATIBLE__
 
 main.hex: ${OBJS}
 	${CC} ${CFLAGS} -o $@ ${OBJS}

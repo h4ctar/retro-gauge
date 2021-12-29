@@ -1,5 +1,7 @@
-#ifndef NEOPIXEL_H
-#define NEOPIXEL_H
+#ifndef _LED_H
+#define _LED_H
+
+#include <stdint.h>
 
 #define OFF 0x000000
 #define WHITE 0xAAAAAA
@@ -8,7 +10,9 @@
 #define BLUE 0x0000AA
 #define YELLOW 0xAA4400
 
-void pixelSetup();
-void sendPixels(long pixels[], int size);
+void initLed();
+
+void writeLeds(long ledColors[], int size);
 
 #endif
+

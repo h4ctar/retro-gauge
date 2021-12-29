@@ -1,28 +1,36 @@
 #include <avr/io.h>
 #include <util/delay.h>
+#include <util/atomic.h>
 
-#include "neopixel.h"
+#include "led.h"
+#include "lcd.h"
 
-#define OIL_BIT 0b00001000
-#define TURN_SIGNAL_BIT 0b01000000
-#define HIGH_BEAM_BIT 0b00010000
-#define NEUTRAL_BIT 0b10000000
+#define INDICATOR_PORT  PORTD
+#define INDICATOR_DDR   DDRD
+#define OIL_PIN         0b00001000
+#define TURN_SIGNAL_PIN 0b01000000
+#define HIGH_BEAM_PIN   0b00010000
+#define NEUTRAL_PIN     0b10000000
 
-int main()
-{
+int main() {
+    // connect led to pin PC0
+    DDRC |= (1 << 0);
+  
+    initLed();
+    initLcd();
+
     // Make the indicator pins inputs
-    DDRD &= ~(OIL_BIT | TURN_SIGNAL_BIT | HIGH_BEAM_BIT | NEUTRAL_BIT);
+    DDRD &= ~(OIL_PIN | TURN_SIGNAL_PIN | HIGH_BEAM_PIN | NEUTRAL_PIN);
 
-    pixelSetup();
-
-    while (1)
-    {
-        long oilPixel = PIND & OIL_BIT ? OFF : RED;
-        long turnSignalPixel = PIND & TURN_SIGNAL_BIT ? OFF : YELLOW;
-        long highBeamPixel = PIND & HIGH_BEAM_BIT ? OFF : BLUE;
-        long neutralPixel = PIND & NEUTRAL_BIT ? OFF : GREEN;
-        long pixels[] = {turnSignalPixel, highBeamPixel, WHITE, WHITE, neutralPixel, oilPixel};
-        sendPixels(pixels, 6);
+    int count = 0;
+    while (1) {
+        long oilLedColor = PIND & OIL_PIN ? OFF : RED;
+        long turnSignalLedColor = PIND & TURN_SIGNAL_PIN ? OFF : YELLOW;
+        long highBeamLedColor = PIND & HIGH_BEAM_PIN ? OFF : BLUE;
+        long neutralLedColor = PIND & NEUTRAL_PIN ? OFF : GREEN;
+        long ledColors[] = {turnSignalLedColor, highBeamLedColor, WHITE, WHITE, neutralLedColor, oilLedColor};
+        writeLeds(ledColors, 6);
+        writeInteger(count++);
     }
 
     return 0;
