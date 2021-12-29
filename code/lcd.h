@@ -6,7 +6,7 @@
 void initLcd();
 
 void writeString(char* string);
-void writeInteger(int integer);
+void writeInteger(uint64_t integer);
 
 #endif
 

@@ -4,6 +4,7 @@
 
 #include "led.h"
 #include "lcd.h"
+#include "timer.h"
 
 #define INDICATOR_PORT  PORTD
 #define INDICATOR_DDR   DDRD
@@ -13,16 +14,15 @@
 #define NEUTRAL_PIN     0b10000000
 
 int main() {
-    // connect led to pin PC0
-    DDRC |= (1 << 0);
-  
+    sei();
+
+    initTimer();
     initLed();
     initLcd();
 
     // Make the indicator pins inputs
     DDRD &= ~(OIL_PIN | TURN_SIGNAL_PIN | HIGH_BEAM_PIN | NEUTRAL_PIN);
 
-    int count = 0;
     while (1) {
         long oilLedColor = PIND & OIL_PIN ? OFF : RED;
         long turnSignalLedColor = PIND & TURN_SIGNAL_PIN ? OFF : YELLOW;
@@ -30,7 +30,8 @@ int main() {
         long neutralLedColor = PIND & NEUTRAL_PIN ? OFF : GREEN;
         long ledColors[] = {turnSignalLedColor, highBeamLedColor, WHITE, WHITE, neutralLedColor, oilLedColor};
         writeLeds(ledColors, 6);
-        writeInteger(count++);
+
+        writeInteger(millis() / 1000);
     }
 
     return 0;

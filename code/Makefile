@@ -1,4 +1,4 @@
-OBJS=main.o motor.o led.o lcd.o
+OBJS=main.o timer.o led.o lcd.o
 
 PROGRAMMER=usbtiny
 ARCH=avr

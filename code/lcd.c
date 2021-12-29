@@ -1,4 +1,5 @@
 #include <avr/io.h>
+#include <stdint.h>
 #include <util/delay.h>
 #include <malloc.h>
 
@@ -161,7 +162,7 @@ void writeString(char* string) {
     }
 }
 
-void writeInteger(int integer) {
+void writeInteger(uint64_t integer) {
     for (int i = 0; i < 8; i++) {
         char ascii = (int) integer % 10 + 48;
         writeAscii(ascii, 7 - i);
