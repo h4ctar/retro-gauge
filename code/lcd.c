@@ -186,6 +186,7 @@ void writeCommand(char command) {
     LCD_PORT |= CS_PIN;
 }
 
+// TODO: only write the bits that have changed
 void writeData(char address, char data) {
     LCD_PORT &= ~CS_PIN;
     writeBits(DATA_MODE, 3);

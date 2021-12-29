@@ -4,6 +4,7 @@
 
 #include "led.h"
 #include "lcd.h"
+#include "motor.h"
 #include "timer.h"
 
 #define INDICATOR_PORT  PORTD
@@ -19,9 +20,16 @@ int main() {
     initTimer();
     initLed();
     initLcd();
+    initMotor();
+
+    setMotorPosition(60 * 12);
+    waitForMotor();
+    setMotorPosition(0);
 
     // Make the indicator pins inputs
     DDRD &= ~(OIL_PIN | TURN_SIGNAL_PIN | HIGH_BEAM_PIN | NEUTRAL_PIN);
+
+    writeInteger(millis());
 
     while (1) {
         long oilLedColor = PIND & OIL_PIN ? OFF : RED;
@@ -31,7 +39,7 @@ int main() {
         long ledColors[] = {turnSignalLedColor, highBeamLedColor, WHITE, WHITE, neutralLedColor, oilLedColor};
         writeLeds(ledColors, 6);
 
-        writeInteger(millis() / 1000);
+        updateMotor();
     }
 
     return 0;
