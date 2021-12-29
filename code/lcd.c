@@ -27,7 +27,7 @@
 #define LCD_ON  0b000000011 // 0000-0011-X - Turn on LCD bias generator
 #define LCD_OFF 0b000000010 // 0000-0010-X - Turn off LCD bias generator
 
-const int font[96] = {
+const uint16_t font[96] = {
     0b0000000000000000,
     0b0110000000000000,
     0b0010000000010000,
@@ -126,7 +126,7 @@ const int font[96] = {
     0b0000000000000000,
 };
 
-const char addressMapping[8][4] = {
+const uint8_t addressMapping[8][4] = {
     { 1,31,30, 0},
     { 3,29,27, 2},
     { 5,28,26, 4},
@@ -137,11 +137,13 @@ const char addressMapping[8][4] = {
     {15,17,16,14},
 };
 
-void writeAscii(char ascii, unsigned char digit);
-void writeCommand(char command);
-void writeData(char address, char data);
-void writeBits(char bits, char numberOfBits);
-void writeBit(char bit);
+uint8_t buffer[32];
+
+void writeAscii(uint8_t ascii, uint8_t digit);
+void writeCommand(uint8_t command);
+void writeData(uint8_t address, uint8_t data);
+void writeBits(uint8_t bits, uint8_t numberOfBits);
+void writeBit(uint8_t bit);
 
 void initLcd() {
     LCD_DDR |= CS_PIN;
@@ -154,31 +156,35 @@ void initLcd() {
 	writeCommand(WDT_DIS);
     writeCommand(SYS_EN);
     writeCommand(LCD_ON);
+
+    for (uint8_t i = 0; i < 32; i++) {
+        writeData(i, buffer[i]);
+    }
 }
 
-void writeString(char* string) {
-    for (int i = 0; i < 8; i++) {
+void writeString(uint8_t* string) {
+    for (uint8_t i = 0; i < 8; i++) {
         writeAscii(string[i], i);
     }
 }
 
 void writeInteger(uint64_t integer) {
-    for (int i = 0; i < 8; i++) {
-        char ascii = (int) integer % 10 + 48;
+    for (uint8_t i = 0; i < 8; i++) {
+        uint8_t ascii = integer % 10 + 48;
         writeAscii(ascii, 7 - i);
         integer /= 10;
     }
 }
 
-void writeAscii(char ascii, unsigned char digit) {
-    unsigned char code = ascii - 32;
+void writeAscii(uint8_t ascii, uint8_t digit) {
+    uint8_t code = ascii - 32;
     writeData(addressMapping[digit][0], (font[code] >> 12) & 0b1111);
     writeData(addressMapping[digit][1], (font[code] >> 8) & 0b1111);
     writeData(addressMapping[digit][2], (font[code] >> 4) & 0b1111);
     writeData(addressMapping[digit][3], font[code] & 0b1111);
 }
 
-void writeCommand(char command) {
+void writeCommand(uint8_t command) {
     LCD_PORT &= ~CS_PIN;
     writeBits(COMMAND_MODE, 3);
     writeBits(command, 8);
@@ -186,22 +192,25 @@ void writeCommand(char command) {
     LCD_PORT |= CS_PIN;
 }
 
-// TODO: only write the bits that have changed
-void writeData(char address, char data) {
-    LCD_PORT &= ~CS_PIN;
-    writeBits(DATA_MODE, 3);
-    writeBits(address, 6);
-    writeBits(data, 4);
-    LCD_PORT |= CS_PIN;
+void writeData(uint8_t address, uint8_t data) {
+    if (buffer[address] != data) {
+        LCD_PORT &= ~CS_PIN;
+        writeBits(DATA_MODE, 3);
+        writeBits(address, 6);
+        writeBits(data, 4);
+        LCD_PORT |= CS_PIN;
+        
+        buffer[address] = data;
+    }
 }
 
-void writeBits(char bits, char numberOfBits) {
+void writeBits(uint8_t bits, uint8_t numberOfBits) {
     for (int i = numberOfBits - 1; i >= 0; i--) {
         writeBit(bits & (1 << i));
     }
 }
 
-void writeBit(char bit) {
+void writeBit(uint8_t bit) {
     LCD_PORT &= ~WR_PIN;
     _delay_us(T_CLK);
     if (bit) {

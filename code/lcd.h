@@ -5,7 +5,7 @@
 
 void initLcd();
 
-void writeString(char* string);
+void writeString(uint8_t* string);
 void writeInteger(uint64_t integer);
 
 #endif

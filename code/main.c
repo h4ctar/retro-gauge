@@ -29,7 +29,6 @@ int main() {
     // Make the indicator pins inputs
     DDRD &= ~(OIL_PIN | TURN_SIGNAL_PIN | HIGH_BEAM_PIN | NEUTRAL_PIN);
 
-    writeInteger(millis());
 
     while (1) {
         long oilLedColor = PIND & OIL_PIN ? OFF : RED;
@@ -38,6 +37,8 @@ int main() {
         long neutralLedColor = PIND & NEUTRAL_PIN ? OFF : GREEN;
         long ledColors[] = {turnSignalLedColor, highBeamLedColor, WHITE, WHITE, neutralLedColor, oilLedColor};
         writeLeds(ledColors, 6);
+    
+        writeInteger(millis() / 1000);
 
         updateMotor();
     }
