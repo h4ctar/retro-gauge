@@ -139,7 +139,7 @@ const uint8_t addressMapping[8][4] = {
 
 uint8_t buffer[32];
 
-void writeAscii(uint8_t ascii, uint8_t digit);
+void writeAscii(uint8_t ascii, uint8_t dp, uint8_t digit);
 void writeCommand(uint8_t command);
 void writeData(uint8_t address, uint8_t data);
 void writeBits(uint8_t bits, uint8_t numberOfBits);
@@ -158,27 +158,53 @@ void initLcd() {
     writeCommand(LCD_ON);
 
     for (uint8_t i = 0; i < 32; i++) {
-        writeData(i, buffer[i]);
+        writeData(i, 0x0F);
+        writeData(i, 0x00);
     }
 }
 
 void writeString(uint8_t* string) {
     for (uint8_t i = 0; i < 8; i++) {
-        writeAscii(string[i], i);
+        writeAscii(string[i], 0, i);
     }
 }
 
-void writeInteger(uint64_t integer) {
+void writeInteger(uint64_t value) {
     for (uint8_t i = 0; i < 8; i++) {
-        uint8_t ascii = integer % 10 + 48;
-        writeAscii(ascii, 7 - i);
-        integer /= 10;
+        if (value >= 1) {
+            uint8_t ascii = value % 10 + 48;
+            writeAscii(ascii, 0, 7 - i);
+            value /= 10;
+        } else {
+            writeAscii(0x00, 0, 7 - i);
+        }
     }
 }
 
-void writeAscii(uint8_t ascii, uint8_t digit) {
+void writeFloat(float value, uint8_t decimalPlaces) {
+    float decimal = value;
+    for (uint8_t i = 0; i < decimalPlaces; i++) {
+        decimal *= 10;
+        uint8_t ascii = (int) decimal % 10 + 48;
+        writeAscii(ascii, 0, 8 - decimalPlaces + i);
+    }
+
+    for (uint8_t i = 0; i < 7; i++) {
+        uint8_t dp = i == 0;
+        if (value > 1) {
+            uint8_t ascii = (int) value % 10 + 48;
+            writeAscii(ascii, dp, 7 - decimalPlaces - i);
+            value /= 10;
+        } else {
+            writeAscii(0x00, dp, 7 - decimalPlaces - i);
+        }
+    }
+}
+
+void writeAscii(uint8_t ascii, uint8_t dp, uint8_t digit) {
     uint8_t code = ascii - 32;
-    writeData(addressMapping[digit][0], (font[code] >> 12) & 0b1111);
+    uint8_t dpCode = dp ? 0b1000 : 0b0000;
+    writeData(addressMapping[digit][0], (font[code] >> 12 | dpCode) & 0b1111);
     writeData(addressMapping[digit][1], (font[code] >> 8) & 0b1111);
     writeData(addressMapping[digit][2], (font[code] >> 4) & 0b1111);
     writeData(addressMapping[digit][3], font[code] & 0b1111);

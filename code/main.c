@@ -1,7 +1,10 @@
 #include <avr/io.h>
+#include <stdint.h>
 #include <util/delay.h>
 #include <util/atomic.h>
+#include <stdio.h>
 
+#include "analog.h"
 #include "led.h"
 #include "lcd.h"
 #include "motor.h"
@@ -18,6 +21,7 @@ int main() {
     sei();
 
     initTimer();
+    initAnalog();
     initLed();
     initLcd();
     initMotor();
@@ -25,10 +29,12 @@ int main() {
     setMotorPosition(60 * 12);
     waitForMotor();
     setMotorPosition(0);
+    waitForMotor();
 
     // Make the indicator pins inputs
     DDRD &= ~(OIL_PIN | TURN_SIGNAL_PIN | HIGH_BEAM_PIN | NEUTRAL_PIN);
 
+    float battVoltage = 0;
 
     while (1) {
         long oilLedColor = PIND & OIL_PIN ? OFF : RED;
@@ -38,7 +44,9 @@ int main() {
         long ledColors[] = {turnSignalLedColor, highBeamLedColor, WHITE, WHITE, neutralLedColor, oilLedColor};
         writeLeds(ledColors, 6);
     
-        writeInteger(millis() / 1000);
+        float pinVoltage = readAnalog(7) * 5 / 1024.f;
+        battVoltage = battVoltage * 0.99 + 0.01 * (pinVoltage * 3.128 + 0.7);
+        writeFloat(battVoltage, 2);
 
         updateMotor();
     }

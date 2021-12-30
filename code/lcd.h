@@ -6,7 +6,8 @@
 void initLcd();
 
 void writeString(uint8_t* string);
-void writeInteger(uint64_t integer);
+void writeInteger(uint64_t value);
+void writeFloat(float value, uint8_t decimalPlaces);
 
 #endif
 
