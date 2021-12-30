@@ -33,9 +33,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 1.0,
-          "height": 1.7,
-          "width": 1.7
+          "drill": 0.762,
+          "height": 1.524,
+          "width": 1.524
         },
         "silk_line_width": 0.12,
         "silk_text_italic": false,
@@ -338,7 +338,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "pcb-main.kicad_pro",
+    "filename": "pcb-sensor.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -398,7 +398,7 @@
     "meta": {
       "version": 1
     },
-    "net_format_name": "Pcbnew",
+    "net_format_name": "",
     "ngspice": {
       "fix_include_paths": true,
       "fix_passive_vals": false,
@@ -408,7 +408,7 @@
       "model_mode": 0,
       "workbook_filename": ""
     },
-    "page_layout_descr_file": "empty.kicad_wks",
+    "page_layout_descr_file": "",
     "plot_directory": "",
     "spice_adjust_passive_values": false,
     "spice_external_command": "spice \"%I\"",
@@ -417,7 +417,7 @@
   },
   "sheets": [
     [
-      "7a4ce4b3-518a-4819-b8b2-5127b3347c64",
+      "5d288b72-89d8-4b36-9670-8b199131f402",
       ""
     ]
   ],
