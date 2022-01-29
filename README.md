@@ -16,6 +16,8 @@ It is housed in a classic round casing, with a retro looking 8 digit starburst L
 
 The toolchain is all open source; the PCB's are designed with KiCad and the case is designed in FreeCAD.
 
+![Assembly](./images/assembly.png)
+
 ## System Design
 
 The system design is simple, the only interesting decision is that the indicators all go via the microcontroller, this lets us do fun things with the indicators (test them when powered on or reuse the oil pressure indicator for other warnings).
@@ -96,6 +98,11 @@ There is a simple Makefile that compiles and links the code and has targets to b
 
 ## Power Supply
 
+A linear voltage regulator will be used to convert the bikes rough 14V down to a smooth 5V for the rest of the system.
+A smoothing capacitor is added on the bikes side to help smooth out the input before it gets to the regulator.
+
+![Power Supply](./images/power-supply.png)
+
 ## Indicator Lights
 
 There are indicator lights for low oil pressure, neutral, high beam and turn signals.
@@ -109,7 +116,7 @@ I'm not sure if the internal pull ups will be good enough so there will be provi
 The highbeam and turn signals indicators should light up when they see 12V.
 We'll use an optocoupler to give some extra protection.
 
-![Neutral](./images/turn-signals.png)
+![Turn Signals](./images/turn-signals.png)
 
 ```
 Diode forward voltage: 0.715V
@@ -128,6 +135,13 @@ R2 = (5V - 4V) / 5mA = 200 ohm
 ## Tachometer
 
 ## Speedometer
+
+## Real Time Clock
+
+A PCF8563T RTC module will be used to keep the time for the clock.
+It will have a coin cell to keep the clock ticking when the key is off.
+
+![RTC](./images/rtc.png)
 
 ## LCD
 
@@ -212,6 +226,8 @@ The X27.168 stepper motor will be used, it is designed for gauges and can be dir
 
 People on the internet say that clamping diodes are required, so they will be added.
 
+![Motor](./images/motor.png)
+
 The X25 datasheet shows the required pattern to step the motor.
 
 ![Step Pattern](./images/stepper-pattern.png)
@@ -225,12 +241,11 @@ The main board has the microcontroller, stepper motor, LCD and real time clock a
 The sensor board has the power supply and the signal conditioning.
 The face board is the dial face and has transparent icons for the indicators.
 
-![Main PCB](./images/pcb-main.png)
-![Sensor PCB](./images/pcb-sensor.png)
-![Face PCB](./images/pcb-face.png)
+![Main PCB](./images/pcb-main.jpg)
 
 ## Case Design
 
 The case is 3D printed out of ASA.
 
 ![Case](./images/case.png)
+
