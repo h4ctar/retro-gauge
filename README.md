@@ -16,7 +16,7 @@ It is housed in a classic round casing, with a retro looking 8 digit starburst L
 
 The toolchain is all open source; the PCB's are designed with KiCad and the case is designed in FreeCAD.
 
-![Assembly](./images/assembly.png)
+![Assembly](./images/assembly.jpg)
 
 ## System Design
 
@@ -237,7 +237,7 @@ The X25 datasheet shows the required pattern to step the motor.
 There are three PCBs: the main board, the sensor board and the face board.
 The boards are stacked using standoffs and are connected together with 2.54mm stacking header pins.
 
-The main board has the microcontroller, stepper motor, LCD and real time clock and indicators.
+The main board has the microcontroller, stepper motor, LCD, real time clock and indicators.
 The sensor board has the power supply and the signal conditioning.
 The face board is the dial face and has transparent icons for the indicators.
 
