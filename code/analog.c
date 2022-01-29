@@ -16,7 +16,7 @@ uint32_t readAnalog(uint8_t channel) {
     ADMUX = (ADMUX & 0xF0) | (channel & 0x0F); 
 
     // Single conversion mode
-    ADCSRA |= (1<<ADSC);
+    ADCSRA |= (1 << ADSC);
 
     // Wait until ADC conversion is complete
     while (ADCSRA & (1 << ADSC));

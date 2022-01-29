@@ -12,11 +12,6 @@
 #define MOT_PIN_3 0b00000100
 #define MOT_PIN_4 0b00001000
 
-//#define MOT_PATTERN_1 0b00000111
-//#define MOT_PATTERN_2 0b00011100
-//#define MOT_PATTERN_3 0b00011100
-//#define MOT_PATTERN_4 0b00110001
-
 #define MOT_PATTERN_4 0b00000111
 #define MOT_PATTERN_3 0b00011100
 #define MOT_PATTERN_2 0b00011100
@@ -35,10 +30,20 @@ void initMotor() {
     MOT_DDR |= MOT_PIN_2;
     MOT_DDR |= MOT_PIN_3;
     MOT_DDR |= MOT_PIN_4;
+
+    // Home the motor
+    setMotorPosition(60 * 12);
+    waitForMotor();
+    setMotorPosition(0);
+    waitForMotor();
 }
 
 void setMotorPosition(uint16_t position) {
     targetPosition = position;
+}
+
+uint16_t getMotorPosition() {
+    return currentPosition;
 }
 
 void updateMotor() {
