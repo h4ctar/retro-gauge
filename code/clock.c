@@ -1,0 +1,6 @@
+void initClock() {
+}
+
+void updateClock() {
+}
+

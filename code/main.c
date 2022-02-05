@@ -4,51 +4,62 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include "button.h"
+#include "twi.h"
+#include "rtc.h"
 #include "analog.h"
 #include "timer.h"
 #include "led.h"
 #include "lcd.h"
 #include "motor.h"
 
+#include "mode.h"
+
 #include "speedo.h"
 #include "indicators.h"
 #include "battery.h"
 
-enum mode {
-    BATTERY,
-    SPEED,
-};
-
-void init();
-void update();
+Mode init();
+void update(Mode* mode);
 
 int main() {
-    init();
+    Mode mode = init();
 
     while (1) {
-        update();
+        update(&mode);
     }
 
     return 0;
 }
 
-void init() {
+Mode init() {
     sei();
 
+    initTwi();
     initTimer();
     initAnalog();
     initLed();
     initLcd();
     initMotor();
+    initButton();
 
     initIndicators();
     initSpeedo();
+
+    return BATTERY;
 }
 
-void update() {
-    updateBatteryVoltage();
-    updateIndicators();
+void update(Mode* mode) {
+    updateButton();
     updateMotor();
-    updateSpeedo();
+
+    updateIndicators();
+
+    updateBatteryVoltage(*mode);
+    updateSpeedo(*mode);
+
+    if (consumeShortButtonPress() == BUTTON_DOWN) {
+        *mode = (*mode + 1) % NUMBER_OF_MODES;
+    }
 }
 

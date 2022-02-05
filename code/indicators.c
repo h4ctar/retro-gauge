@@ -4,7 +4,7 @@
 
 #include "led.h"
 
-#define INDICATOR_PORT  PORTD
+#define INDICATOR_PIN   PIND
 #define INDICATOR_DDR   DDRD
 #define OIL_PIN         0b00001000
 #define TURN_SIGNAL_PIN 0b00100000
@@ -21,10 +21,10 @@ void initIndicators() {
 }
 
 void updateIndicators() {
-    long oilLedColor = PIND & OIL_PIN ? OFF : RED;
-    long turnSignalLedColor = PIND & TURN_SIGNAL_PIN ? OFF : YELLOW;
-    long highBeamLedColor = PIND & HIGH_BEAM_PIN ? OFF : BLUE;
-    long neutralLedColor = PIND & NEUTRAL_PIN ? OFF : GREEN;
+    long oilLedColor = INDICATOR_PIN & OIL_PIN ? OFF : RED;
+    long turnSignalLedColor = OFF; // INDICATOR_PIN & TURN_SIGNAL_PIN ? OFF : YELLOW;
+    long highBeamLedColor = OFF; // INDICATOR_PIN & HIGH_BEAM_PIN ? OFF : BLUE;
+    long neutralLedColor = INDICATOR_PIN & NEUTRAL_PIN ? OFF : GREEN;
     long ledColors[] = {turnSignalLedColor, highBeamLedColor, WHITE, WHITE, neutralLedColor, oilLedColor};
     writeLeds(ledColors, 6);
 }

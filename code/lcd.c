@@ -163,13 +163,13 @@ void initLcd() {
     }
 }
 
-void writeString(uint8_t* string) {
+void lcdDisplayString(char* string) {
     for (uint8_t i = 0; i < 8; i++) {
         writeAscii(string[i], 0, i);
     }
 }
 
-void writeInteger(uint64_t value) {
+void lcdDisplayInteger(uint64_t value) {
     for (uint8_t i = 0; i < 8; i++) {
         if (value >= 1) {
             uint8_t ascii = value % 10 + 48;
@@ -181,8 +181,10 @@ void writeInteger(uint64_t value) {
     }
 }
 
-void writeFloat(float value, uint8_t decimalPlaces) {
+void lcdDisplayFloat(float value, uint8_t decimalPlaces) {
     float decimal = value;
+
+    // Display the decimal places
     for (uint8_t i = 0; i < decimalPlaces; i++) {
         decimal *= 10;
         uint8_t ascii = (int) decimal % 10 + 48;

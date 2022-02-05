@@ -5,6 +5,8 @@
 #include <math.h>
 #include <stdint.h>
 
+#include "lcd.h"
+#include "mode.h"
 #include "motor.h"
 #include "timer.h"
 
@@ -41,7 +43,7 @@ void initSpeedo() {
     sei();
 }
 
-void updateSpeedo() {
+void updateSpeedo(Mode mode) {
     static double speed = 0.0;
     double mps = 0;
 
@@ -56,6 +58,20 @@ void updateSpeedo() {
     speed = 0.999 * speed + 0.001 * kph;
 
     setMotorPosition(speed * 6);
+
+    switch (mode) {
+        case SPEED:
+            lcdDisplayFloat(speed, 2);
+            break;
+        case ODO:
+            lcdDisplayString("     ODO");
+            break;
+        case TRIP:
+            lcdDisplayString("    TRIP");
+            break;
+        default:
+            break;
+    }
 }
 
 
