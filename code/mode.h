@@ -6,7 +6,7 @@ typedef enum {
     SPEED,
     ODO,
     TRIP,
-// TIME,
+    CLOCK,
     NUMBER_OF_MODES,
 } Mode;
 

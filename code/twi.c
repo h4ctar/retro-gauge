@@ -8,6 +8,7 @@
 #define TWI_FREQ 100000L
 
 #define TWI_PORT PORTC
+#define TWI_DDR DDRC
 #define SDA_MASK (1 << PC4)
 #define SCL_MASK (1 << PC5)
 

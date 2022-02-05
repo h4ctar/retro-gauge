@@ -2,9 +2,9 @@
 
 #include "twi.h"
 
-#define RTC_ADDRESS 0x68
-#define TIME_REG 0
-#define TIME_SIZE 7
+#define RTC_READ_ADDRESS 0xA3
+#define RTC_WRITE_ADDRESS 0xA2
+#define TIME_REG 2
 
 uint8_t bcdToDec(uint8_t b);
 
@@ -12,21 +12,20 @@ void readTime(Time* time) {
     // Send start
     twiStart();
     // Select device and send write bit
-    twiWrite(RTC_ADDRESS << 1);
+    twiWrite(RTC_WRITE_ADDRESS);
     // Select the time register
     twiWrite(TIME_REG);
 
     // Send repeated start
     twiStart();
     // Select device and send read bit
-    twiWrite((RTC_ADDRESS << 1) | 1);
+    twiWrite(RTC_READ_ADDRESS);
 
     time->second = bcdToDec(twiReadAck() & 0x7f);
     time->minute = bcdToDec(twiReadAck() & 0x7f);
-    time->hour = bcdToDec(twiReadNack() & 0x7f);
+    time->hour = bcdToDec(twiReadNack() & 0x3f);
 
     twiStop();
-
 }
 
 uint8_t bcdToDec(uint8_t b) {

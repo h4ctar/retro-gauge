@@ -18,6 +18,7 @@
 #include "speedo.h"
 #include "indicators.h"
 #include "battery.h"
+#include "clock.h"
 
 Mode mode = BATTERY;
 uint32_t modeSwitchTime;
@@ -55,11 +56,11 @@ void init() {
 void update() {
     updateButton();
     updateMotor();
-
     updateIndicators();
 
     updateBatteryVoltage();
     updateSpeedo();
+    updateClock();
 
     if (consumeShortButtonPress() == BUTTON_DOWN) {
         mode = (mode + 1) % NUMBER_OF_MODES;
@@ -82,6 +83,9 @@ void display() {
             case TRIP:
                 lcdDisplayString("Trip    ");
                 break;
+            case CLOCK:
+                lcdDisplayString("Clock   ");
+                break;
             default:
                 break;
         }
@@ -98,6 +102,9 @@ void display() {
                 break;
             case TRIP:
                 displayTrip();
+                break;
+            case CLOCK:
+                displayClock();
                 break;
             default:
                 break;
