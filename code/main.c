@@ -74,7 +74,7 @@ void display() {
                 lcdDisplayString("Battery ");
                 break;
             case SPEED:
-                lcdDisplayString("Speed  ");
+                lcdDisplayString("Speed   ");
                 break;
             case ODO:
                 lcdDisplayString("Odo     ");

@@ -25,7 +25,7 @@ void updateIndicators() {
     long turnSignalLedColor = OFF; // INDICATOR_PIN & TURN_SIGNAL_MASK ? OFF : YELLOW;
     long highBeamLedColor = OFF; // INDICATOR_PIN & HIGH_BEAM_MASK ? OFF : BLUE;
     long neutralLedColor = INDICATOR_PIN & NEUTRAL_MASK ? OFF : GREEN;
-    long ledColors[] = {turnSignalLedColor, highBeamLedColor, WHITE, WHITE, neutralLedColor, oilLedColor};
+    long ledColors[] = {turnSignalLedColor, highBeamLedColor, OFF, OFF, neutralLedColor, oilLedColor};
     writeLeds(ledColors, 6);
 }
 

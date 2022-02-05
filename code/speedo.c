@@ -61,7 +61,8 @@ void updateSpeedo() {
 }
 
 void displaySpeed() {
-    lcdDisplayInteger(speed);
+    lcdDisplayString("    0k/h");
+    // lcdDisplayInteger(speed);
 }
 
 void displayOdo() {
