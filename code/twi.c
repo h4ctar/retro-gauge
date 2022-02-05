@@ -8,12 +8,12 @@
 #define TWI_FREQ 100000L
 
 #define TWI_PORT PORTC
-#define SDA_PIN 0b00010000
-#define SCL_PIN 0b00100000
+#define SDA_MASK (1 << PC4)
+#define SCL_MASK (1 << PC5)
 
 void initTwi() {
-    TWI_PORT |= SDA_PIN;
-    TWI_PORT |= SCL_PIN;
+    TWI_PORT |= SDA_MASK;
+    TWI_PORT |= SCL_MASK;
     
     // Set SCL to 400kHz
     TWSR &= ~TWPS0;

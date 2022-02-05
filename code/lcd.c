@@ -5,11 +5,11 @@
 
 #include "lcd.h"
 
-#define LCD_PORT PORTB
-#define LCD_DDR DDRB
-#define CS_PIN 0b00100000
-#define WR_PIN 0b00010000
-#define DATA_PIN 0b00001000
+#define LCD_PORT    PORTB
+#define LCD_DDR     DDRB
+#define CS_MASK     (1 << PB5)
+#define WR_MASK     (1 << PB4)
+#define DATA_MASK   (1 << PB3)
 
 #define T_CLK 5 // the clock time in micro seconds
 
@@ -146,9 +146,9 @@ void writeBits(uint8_t bits, uint8_t numberOfBits);
 void writeBit(uint8_t bit);
 
 void initLcd() {
-    LCD_DDR |= CS_PIN;
-    LCD_DDR |= WR_PIN;
-    LCD_DDR |= DATA_PIN;
+    LCD_DDR |= CS_MASK;
+    LCD_DDR |= WR_MASK;
+    LCD_DDR |= DATA_MASK;
 
     writeCommand(BIAS);
 	writeCommand(RC_256K);
@@ -215,20 +215,20 @@ void writeAscii(uint8_t ascii, uint8_t dp, uint8_t digit) {
 }
 
 void writeCommand(uint8_t command) {
-    LCD_PORT &= ~CS_PIN;
+    LCD_PORT &= ~CS_MASK;
     writeBits(COMMAND_MODE, 3);
     writeBits(command, 8);
     writeBit(0);
-    LCD_PORT |= CS_PIN;
+    LCD_PORT |= CS_MASK;
 }
 
 void writeData(uint8_t address, uint8_t data) {
     if (buffer[address] != data) {
-        LCD_PORT &= ~CS_PIN;
+        LCD_PORT &= ~CS_MASK;
         writeBits(DATA_MODE, 3);
         writeBits(address, 6);
         writeBits(data, 4);
-        LCD_PORT |= CS_PIN;
+        LCD_PORT |= CS_MASK;
         
         buffer[address] = data;
     }
@@ -241,14 +241,14 @@ void writeBits(uint8_t bits, uint8_t numberOfBits) {
 }
 
 void writeBit(uint8_t bit) {
-    LCD_PORT &= ~WR_PIN;
+    LCD_PORT &= ~WR_MASK;
     _delay_us(T_CLK);
     if (bit) {
-        LCD_PORT |= DATA_PIN;
+        LCD_PORT |= DATA_MASK;
     } else {
-        LCD_PORT &= ~DATA_PIN;
+        LCD_PORT &= ~DATA_MASK;
     }
-    LCD_PORT |= WR_PIN;
+    LCD_PORT |= WR_MASK;
     _delay_us(T_CLK);
 }
 

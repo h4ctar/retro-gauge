@@ -4,9 +4,9 @@
 #include <avr/io.h>
 #include <stdint.h>
 
-#define BUTTON_PIN PIND
-#define BUTTON_DDR DDRD
-#define BUTTON_MASK 0b00000010
+#define BUTTON_PIN  PIND
+#define BUTTON_DDR  DDRD
+#define BUTTON_MASK (1 << PD1)
 
 #define SHORT_PRESS_DURATION 1000
 
