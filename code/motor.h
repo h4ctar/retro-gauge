@@ -4,10 +4,8 @@
 #include <stdint.h>
 
 void initMotor();
-void setMotorPosition(uint16_t position);
+void setMotorTargetPosition(float position);
 void updateMotor();
-void waitForMotor();
-uint16_t getMotorPosition();
 
 #endif
 

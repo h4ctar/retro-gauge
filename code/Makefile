@@ -8,7 +8,7 @@ HFUSE=0b11010110
 EFUSE=0b11111101
 
 CC=clang
-CFLAGS=-Wall --target=${ARCH} -mmcu=${MCU} -O -isystem /usr/avr/include -DF_CPU=16000000 -D__AVR_ATmega328P__ -D__DELAY_BACKWARD_COMPATIBLE__
+CFLAGS=-Wall -Wno-unknown-attributes --target=${ARCH} -mmcu=${MCU} -O -isystem /usr/avr/include -DF_CPU=16000000 -D__AVR_ATmega328P__ -D__DELAY_BACKWARD_COMPATIBLE__
 
 main.hex: ${OBJS}
 	${CC} ${CFLAGS} -o $@ ${OBJS}
@@ -26,3 +26,4 @@ fuses:
 
 .c.o:
 	${CC} ${CFLAGS} ${INCLUDES}-c $<
+

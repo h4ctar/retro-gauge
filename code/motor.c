@@ -16,12 +16,13 @@
 #define MOT_PATTERN_2 0b00011100
 #define MOT_PATTERN_1 0b00110001
 
-#define STEP_TIME 1000
+#define STEP_PERIOD 1000
 
 uint32_t lastStepTime = 0;
-uint16_t currentPosition = 0;
-uint16_t targetPosition = 0;
+uint16_t currentSteps = 0;
+uint16_t targetSteps = 0;
 
+void waitForMotor();
 void stepMotor();
 
 void initMotor() {
@@ -31,27 +32,27 @@ void initMotor() {
     MOT_DDR |= MOT_4_MASK;
 
     // Home the motor
-    setMotorPosition(60 * 12);
+    setMotorTargetPosition(12);
     waitForMotor();
-    setMotorPosition(0);
+    setMotorTargetPosition(0);
     waitForMotor();
 }
 
-void setMotorPosition(uint16_t position) {
-    targetPosition = position;
+void setMotorTargetPosition(float position) {
+    targetSteps = position * 60;
 }
 
-uint16_t getMotorPosition() {
-    return currentPosition;
+float getMotorCurrentPosition() {
+    return currentSteps / 60.f;
 }
 
 void updateMotor() {
     uint32_t currentTime = micros();
-    if (currentTime - lastStepTime >= STEP_TIME) {
-        int16_t delta = targetPosition - currentPosition;
+    if (currentTime - lastStepTime >= STEP_PERIOD) {
+        int16_t delta = targetSteps - currentSteps;
         int8_t direction = (delta > 0) - (delta < 0);
 
-        currentPosition += direction;
+        currentSteps += direction;
 
         stepMotor();
 
@@ -60,13 +61,13 @@ void updateMotor() {
 }
 
 void waitForMotor() {
-    while (currentPosition != targetPosition) {
+    while (currentSteps != targetSteps) {
         updateMotor();
     }
 }
 
 void stepMotor() {
-    uint8_t step = currentPosition % 6;
+    uint8_t step = currentSteps % 6;
 
     if ((MOT_PATTERN_1 >> step) & 1)
         MOT_PORT |= MOT_1_MASK;

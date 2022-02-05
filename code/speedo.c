@@ -14,18 +14,28 @@
 #define SPEED_DDR  DDRD
 #define SPEED_PIN  PD7
 
-#define WHEEL_DIAMETER 0.6477
+#define WHEEL_DIAMETER      0.6477
 #define WHEEL_CIRCUMFERENCE (M_PI * WHEEL_DIAMETER)
-#define NUMBER_OF_MAGNETS 2
+#define NUMBER_OF_MAGNETS   2
+// If the period between two pulses excedes this threshold then the bike is considered stopped (microseconds)
+#define STOPPED_THRESHOLD   1000000
+
+#define NUMBER_OF_PERIODS 10
+
+double kilometersPerHour = 0.0;
 
 uint32_t lastPulseTime = 0;
-uint32_t lastPeriod = 0;
-double speed = 0.0;
+uint32_t periods[NUMBER_OF_PERIODS];
+uint32_t totalPeriod;
+uint8_t periodIndex = 0;
 
 ISR(PCINT2_vect) {
     uint32_t currentTime = micros();
     if (lastPulseTime) {
-        lastPeriod = currentTime - lastPulseTime;
+        totalPeriod -= periods[periodIndex];
+        periods[periodIndex] = currentTime - lastPulseTime;
+        totalPeriod += periods[periodIndex];
+        periodIndex = (periodIndex + 1) % NUMBER_OF_PERIODS;
     }
     lastPulseTime = currentTime;
 }
@@ -36,7 +46,6 @@ void initSpeedo() {
 
     cli();
     // Turn on the pin change interrupt for PORTD
-    // TODO: is there a macro for this?
     PCICR |= 0b00000100;
 
     // Enable it only for PD7
@@ -45,19 +54,21 @@ void initSpeedo() {
 }
 
 void updateSpeedo() {
-    double mps = 0;
+    // The average period in micro seconds
+    uint32_t averagePeriod = 0;
 
     cli();
     uint32_t timeSinceLastPulse = micros() - lastPulseTime;
-    if (lastPeriod > 0 && timeSinceLastPulse < 1000000) {
-        mps = WHEEL_CIRCUMFERENCE / (lastPeriod / 1000000.0) / NUMBER_OF_MAGNETS; 
+    // Leave the period at zero if the time since last pulse exceeded the stopped threshold
+    if (timeSinceLastPulse < STOPPED_THRESHOLD) {
+        averagePeriod = totalPeriod / NUMBER_OF_PERIODS;
     }
     sei();
 
-    double kph = mps / 3.6;
-    speed = 0.999 * speed + 0.001 * kph;
+    float metersPerSecond = WHEEL_CIRCUMFERENCE / (averagePeriod / 1000000.f) / NUMBER_OF_MAGNETS; 
+    kilometersPerHour = metersPerSecond / 3.6f;
 
-    setMotorPosition(speed * 6);
+    setMotorTargetPosition(kilometersPerHour / 10);
 }
 
 void displaySpeed() {
