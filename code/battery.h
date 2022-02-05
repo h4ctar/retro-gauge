@@ -3,7 +3,8 @@
 
 #include "mode.h"
 
-void updateBatteryVoltage(Mode mode);
+void updateBatteryVoltage();
+void displayBattery();
 
 #endif
 

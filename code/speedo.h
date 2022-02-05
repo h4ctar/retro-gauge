@@ -4,7 +4,10 @@
 #include "mode.h"
 
 void initSpeedo();
-void updateSpeedo(Mode mode);
+void updateSpeedo();
+void displaySpeed();
+void displayOdo();
+void displayTrip();
 
 #endif
 

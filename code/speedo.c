@@ -20,6 +20,7 @@
 
 uint32_t lastPulseTime = 0;
 uint32_t lastPeriod = 0;
+double speed = 0.0;
 
 ISR(PCINT2_vect) {
     uint32_t currentTime = micros();
@@ -43,8 +44,7 @@ void initSpeedo() {
     sei();
 }
 
-void updateSpeedo(Mode mode) {
-    static double speed = 0.0;
+void updateSpeedo() {
     double mps = 0;
 
     cli();
@@ -58,22 +58,19 @@ void updateSpeedo(Mode mode) {
     speed = 0.999 * speed + 0.001 * kph;
 
     setMotorPosition(speed * 6);
-
-    switch (mode) {
-        case SPEED:
-            lcdDisplayFloat(speed, 2);
-            break;
-        case ODO:
-            lcdDisplayString("     ODO");
-            break;
-        case TRIP:
-            lcdDisplayString("    TRIP");
-            break;
-        default:
-            break;
-    }
 }
 
+void displaySpeed() {
+    lcdDisplayInteger(speed);
+}
+
+void displayOdo() {
+    lcdDisplayString("     0km");
+}
+
+void displayTrip() {
+    lcdDisplayString("     0km");
+}
 
 // TODO: setMotorPosition should take double between 0.0 and 12.0
 // TODO: motor should check > 0 and < max steps

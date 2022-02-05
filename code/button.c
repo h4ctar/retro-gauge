@@ -23,7 +23,7 @@ void initButton() {
 }
 
 void updateButton() {
-    currentState = (BUTTON_PIN & BUTTON_MASK) ? BUTTON_DOWN : BUTTON_UP;
+    currentState = (BUTTON_PIN & BUTTON_MASK) ? BUTTON_UP : BUTTON_DOWN;
 
     if (lastState == BUTTON_UP && currentState == BUTTON_DOWN) {
         pressedTime = millis();
@@ -45,20 +45,20 @@ void updateButton() {
 }
 
 uint8_t consumeShortButtonPress() {
-    if (shortPress) {
-        shortPress = 0;
-        return 1;
+    if (shortPress == BUTTON_DOWN) {
+        shortPress = BUTTON_UP;
+        return BUTTON_DOWN;
     } else {
-        return 0;
+        return BUTTON_UP;
     }
 }
 
 uint8_t consumeLongButtonPress() {
-    if (longPress) {
-        longPress = 0;
-        return 1;
+    if (longPress == BUTTON_DOWN) {
+        longPress = BUTTON_UP;
+        return BUTTON_DOWN;
     } else {
-        return 0;
+        return BUTTON_UP;
     }
 }
 

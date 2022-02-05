@@ -19,20 +19,25 @@
 #include "indicators.h"
 #include "battery.h"
 
-Mode init();
-void update(Mode* mode);
+Mode mode = BATTERY;
+uint32_t modeSwitchTime;
+
+void init();
+void update();
+void display();
 
 int main() {
-    Mode mode = init();
+    init();
 
     while (1) {
-        update(&mode);
+        update();
+        display();
     }
 
     return 0;
 }
 
-Mode init() {
+void init() {
     sei();
 
     initTwi();
@@ -45,21 +50,58 @@ Mode init() {
 
     initIndicators();
     initSpeedo();
-
-    return BATTERY;
 }
 
-void update(Mode* mode) {
+void update() {
     updateButton();
     updateMotor();
 
     updateIndicators();
 
-    updateBatteryVoltage(*mode);
-    updateSpeedo(*mode);
+    updateBatteryVoltage();
+    updateSpeedo();
 
     if (consumeShortButtonPress() == BUTTON_DOWN) {
-        *mode = (*mode + 1) % NUMBER_OF_MODES;
+        mode = (mode + 1) % NUMBER_OF_MODES;
+        modeSwitchTime = millis();
+    }
+}
+
+void display() {
+    if (millis() - modeSwitchTime < 1000) {
+        switch (mode) {
+            case BATTERY:
+                lcdDisplayString("Battery ");
+                break;
+            case SPEED:
+                lcdDisplayString("Speed  ");
+                break;
+            case ODO:
+                lcdDisplayString("Odo     ");
+                break;
+            case TRIP:
+                lcdDisplayString("Trip    ");
+                break;
+            default:
+                break;
+        }
+    } else {
+        switch (mode) {
+            case BATTERY:
+                displayBattery();
+                break;
+            case SPEED:
+                displaySpeed();
+                break;
+            case ODO:
+                displayOdo();
+                break;
+            case TRIP:
+                displayTrip();
+                break;
+            default:
+                break;
+        }
     }
 }
 

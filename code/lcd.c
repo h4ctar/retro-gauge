@@ -170,6 +170,7 @@ void lcdDisplayString(char* string) {
 }
 
 void lcdDisplayInteger(uint64_t value) {
+    // TODO: This does not display 0
     for (uint8_t i = 0; i < 8; i++) {
         if (value >= 1) {
             uint8_t ascii = value % 10 + 48;
@@ -182,6 +183,7 @@ void lcdDisplayInteger(uint64_t value) {
 }
 
 void lcdDisplayFloat(float value, uint8_t decimalPlaces) {
+    // TODO: This does not display 0.0
     float decimal = value;
 
     // Display the decimal places
