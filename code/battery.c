@@ -27,6 +27,6 @@ void updateBatteryVoltage() {
 }
 
 void displayBattery() {
-    lcdDisplayFloat(battVoltage, 1);
+    lcdDisplayFloat(battVoltage, 1, "V");
 }
 

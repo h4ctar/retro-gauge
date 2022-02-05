@@ -72,16 +72,15 @@ void updateSpeedo() {
 }
 
 void displaySpeed() {
-    lcdDisplayString("    0k/h");
-    // lcdDisplayInteger(speed);
+    lcdDisplayInteger(kilometersPerHour, "km/h");
 }
 
 void displayOdo() {
-    lcdDisplayString("     0km");
+    lcdDisplayInteger(0, "km");
 }
 
 void displayTrip() {
-    lcdDisplayString("     0km");
+    lcdDisplayInteger(0, "km");
 }
 
 // TODO: setMotorPosition should take double between 0.0 and 12.0

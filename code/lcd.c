@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include <stdint.h>
+#include <string.h>
 #include <util/delay.h>
 #include <malloc.h>
 
@@ -164,43 +165,60 @@ void initLcd() {
 }
 
 void lcdDisplayString(char* string) {
+    // TODO: length check
     for (uint8_t i = 0; i < 8; i++) {
         writeAscii(string[i], 0, i);
     }
 }
 
-void lcdDisplayInteger(uint64_t value) {
-    // TODO: This does not display 0
-    for (uint8_t i = 0; i < 8; i++) {
-        if (value >= 1) {
+void lcdDisplayInteger(uint64_t value, char* units) {
+    // Loop through the characters of the units string
+    uint8_t unitsLength = strlen(units);
+    uint8_t offset = 8 - unitsLength;
+    for (uint8_t i = 0; i < unitsLength; i++) {
+        writeAscii(units[i], 0, offset + i);
+    }
+
+    // Loop through the remaining digits of the LCD starting from the right
+    offset -= 1;
+    for (uint8_t i = 0; i < 8 - unitsLength; i++) {
+        if (value >= 1 || i == 0) {
             uint8_t ascii = value % 10 + 48;
-            writeAscii(ascii, 0, 7 - i);
+            writeAscii(ascii, 0, offset - i);
             value /= 10;
         } else {
-            writeAscii(0x00, 0, 7 - i);
+            writeAscii(0x00, 0, offset - i);
         }
     }
 }
 
-void lcdDisplayFloat(float value, uint8_t decimalPlaces) {
-    // TODO: This does not display 0.0
-    float decimal = value;
+void lcdDisplayFloat(float value, uint8_t decimalPlaces, char* units) {
+    // Loop through the characters of the units string
+    uint8_t unitsLength = strlen(units);
+    uint8_t offset = 8 - unitsLength;
+    for (uint8_t i = 0; i < unitsLength; i++) {
+        writeAscii(units[i], 0, offset + i);
+    }
 
-    // Display the decimal places
+    // Display the digits on the right side of the decimal place
+    offset -= decimalPlaces;
+    float decimal = value;
     for (uint8_t i = 0; i < decimalPlaces; i++) {
         decimal *= 10;
         uint8_t ascii = (int) decimal % 10 + 48;
-        writeAscii(ascii, 0, 8 - decimalPlaces + i);
+        writeAscii(ascii, 0, offset + i);
     }
 
+    // Display the digits on the left side of the decimal place
+    offset -= 1;
     for (uint8_t i = 0; i < 7; i++) {
         uint8_t dp = i == 0;
-        if (value > 1) {
+        if (value > 1 || i == 0) {
             uint8_t ascii = (int) value % 10 + 48;
-            writeAscii(ascii, dp, 7 - decimalPlaces - i);
+            writeAscii(ascii, dp, offset - i);
             value /= 10;
         } else {
-            writeAscii(0x00, dp, 7 - decimalPlaces - i);
+            writeAscii(0x00, dp, offset - i);
         }
     }
 }
