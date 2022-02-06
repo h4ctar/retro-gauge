@@ -6,7 +6,7 @@
 void initLcd();
 
 void lcdDisplayString(char* string);
-void lcdDisplayInteger(uint64_t value, char* units);
+void lcdDisplayInteger(uint32_t value, char* units);
 void lcdDisplayFloat(float value, uint8_t decimalPlaces, char* units);
 
 #endif

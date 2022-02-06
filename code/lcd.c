@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <string.h>
 #include <util/delay.h>
 #include <malloc.h>
@@ -171,7 +172,7 @@ void lcdDisplayString(char* string) {
     }
 }
 
-void lcdDisplayInteger(uint64_t value, char* units) {
+void lcdDisplayInteger(uint32_t value, char* units) {
     // Loop through the characters of the units string
     uint8_t unitsLength = strlen(units);
     uint8_t offset = 8 - unitsLength;
@@ -211,7 +212,7 @@ void lcdDisplayFloat(float value, uint8_t decimalPlaces, char* units) {
 
     // Display the digits on the left side of the decimal place
     offset -= 1;
-    for (uint8_t i = 0; i < 7; i++) {
+    for (uint8_t i = 0; i < 8 - unitsLength - decimalPlaces; i++) {
         uint8_t dp = i == 0;
         if (value > 1 || i == 0) {
             uint8_t ascii = (int) value % 10 + 48;

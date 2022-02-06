@@ -21,16 +21,16 @@
 // If the period between two pulses excedes this threshold then the bike is considered stopped (microseconds)
 #define STOPPED_THRESHOLD   1000000
 
-#define NUMBER_OF_PERIODS 10
+#define NUMBER_OF_PERIODS 20
 
 double kilometersPerHour = 0.0;
-double odoMeters = 0.0;
-double tripResetMeters = 0.0;
+volatile double odo = 0.0;
+double tripReset = 0.0;
 
-uint32_t lastPulseTime = 0;
-uint32_t periods[NUMBER_OF_PERIODS];
-uint32_t totalPeriod;
-uint8_t periodIndex = 0;
+volatile uint32_t lastPulseTime = 0;
+volatile uint32_t periods[NUMBER_OF_PERIODS];
+volatile uint32_t totalPeriod;
+volatile uint8_t periodIndex = 0;
 
 ISR(PCINT2_vect) {
     uint32_t currentTime = micros();
@@ -40,7 +40,7 @@ ISR(PCINT2_vect) {
         totalPeriod += periods[periodIndex];
         periodIndex = (periodIndex + 1) % NUMBER_OF_PERIODS;
 
-        odoMeters += WHEEL_CIRCUMFERENCE / NUMBER_OF_MAGNETS;
+        odo += WHEEL_CIRCUMFERENCE / NUMBER_OF_MAGNETS;
     }
     lastPulseTime = currentTime;
 }
@@ -60,13 +60,13 @@ void initSpeedo() {
 
 void updateSpeedo(Mode mode) {
     // The average period in micro seconds
-    uint32_t averagePeriod = 0;
+    double averagePeriod = 0;
 
     cli();
     uint32_t timeSinceLastPulse = micros() - lastPulseTime;
     // Leave the period at zero if the time since last pulse exceeded the stopped threshold
     if (timeSinceLastPulse < STOPPED_THRESHOLD) {
-        averagePeriod = totalPeriod / NUMBER_OF_PERIODS;
+        averagePeriod = (double) totalPeriod / NUMBER_OF_PERIODS;
     }
     sei();
 
@@ -80,9 +80,7 @@ void updateSpeedo(Mode mode) {
     setMotorTargetPosition(kilometersPerHour / 10);
 
     if (mode == TRIP && consumeLongButtonPress() == BUTTON_DOWN) {
-        cli();
-        tripResetMeters = odoMeters;
-        sei();
+        tripReset = odo;
     }
 }
 
@@ -91,10 +89,11 @@ void displaySpeed() {
 }
 
 void displayOdo() {
-    lcdDisplayInteger(odoMeters / 1000, "km");
+    // lcdDisplayInteger(odo / 1000, "km");
+    lcdDisplayFloat(odo / 1000, 1, "km");
 }
 
 void displayTrip() {
-    lcdDisplayFloat((odoMeters - tripResetMeters) / 1000, 1, "km");
+    lcdDisplayFloat((odo - tripReset) / 1000, 1, "km");
 }
 

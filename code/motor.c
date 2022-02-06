@@ -18,15 +18,9 @@
 
 #define STEP_PERIOD 1000
 
-#define min(a,b) \
-   ({ __typeof__ (a) _a = (a); \
-       __typeof__ (b) _b = (b); \
-     _a < _b ? _a : _b; })
-
-#define max(a,b) \
-   ({ __typeof__ (a) _a = (a); \
-       __typeof__ (b) _b = (b); \
-     _a > _b ? _a : _b; })
+#define MAX_POSITION        12
+#define STEPS_PER_POSITION  60.
+#define MAX_STEPS           (STEPS_PER_POSITION * MAX_POSITION)
 
 uint32_t lastStepTime = 0;
 uint16_t currentSteps = 0;
@@ -42,18 +36,24 @@ void initMotor() {
     MOT_DDR |= MOT_4_MASK;
 
     // Home the motor
-    setMotorTargetPosition(12);
+    setMotorTargetPosition(MAX_POSITION);
     waitForMotor();
     setMotorTargetPosition(0);
     waitForMotor();
 }
 
 void setMotorTargetPosition(float position) {
-    targetSteps = max(min(position * 60, 12 * 60), 0);
+    targetSteps = position * STEPS_PER_POSITION;
+    if (targetSteps > MAX_STEPS) {
+        targetSteps = MAX_STEPS;
+    }
+    if (targetSteps < 0) {
+        targetSteps = 0;
+    }
 }
 
 float getMotorCurrentPosition() {
-    return currentSteps / 60.f;
+    return currentSteps / STEPS_PER_POSITION;
 }
 
 void updateMotor() {
