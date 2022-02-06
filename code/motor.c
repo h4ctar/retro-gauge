@@ -18,6 +18,16 @@
 
 #define STEP_PERIOD 1000
 
+#define min(a,b) \
+   ({ __typeof__ (a) _a = (a); \
+       __typeof__ (b) _b = (b); \
+     _a < _b ? _a : _b; })
+
+#define max(a,b) \
+   ({ __typeof__ (a) _a = (a); \
+       __typeof__ (b) _b = (b); \
+     _a > _b ? _a : _b; })
+
 uint32_t lastStepTime = 0;
 uint16_t currentSteps = 0;
 uint16_t targetSteps = 0;
@@ -39,7 +49,7 @@ void initMotor() {
 }
 
 void setMotorTargetPosition(float position) {
-    targetSteps = position * 60;
+    targetSteps = max(min(position * 60, 12 * 60), 0);
 }
 
 float getMotorCurrentPosition() {

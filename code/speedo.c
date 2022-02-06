@@ -5,6 +5,7 @@
 #include <math.h>
 #include <stdint.h>
 
+#include "button.h"
 #include "lcd.h"
 #include "mode.h"
 #include "motor.h"
@@ -23,6 +24,8 @@
 #define NUMBER_OF_PERIODS 10
 
 double kilometersPerHour = 0.0;
+double odoMeters = 0.0;
+double tripResetMeters = 0.0;
 
 uint32_t lastPulseTime = 0;
 uint32_t periods[NUMBER_OF_PERIODS];
@@ -36,6 +39,8 @@ ISR(PCINT2_vect) {
         periods[periodIndex] = currentTime - lastPulseTime;
         totalPeriod += periods[periodIndex];
         periodIndex = (periodIndex + 1) % NUMBER_OF_PERIODS;
+
+        odoMeters += WHEEL_CIRCUMFERENCE / NUMBER_OF_MAGNETS;
     }
     lastPulseTime = currentTime;
 }
@@ -53,7 +58,7 @@ void initSpeedo() {
     sei();
 }
 
-void updateSpeedo() {
+void updateSpeedo(Mode mode) {
     // The average period in micro seconds
     uint32_t averagePeriod = 0;
 
@@ -65,10 +70,20 @@ void updateSpeedo() {
     }
     sei();
 
-    float metersPerSecond = WHEEL_CIRCUMFERENCE / (averagePeriod / 1000000.f) / NUMBER_OF_MAGNETS; 
-    kilometersPerHour = metersPerSecond / 3.6f;
+    if (averagePeriod) {
+        double metersPerSecond = WHEEL_CIRCUMFERENCE / (averagePeriod / 1000000.) / NUMBER_OF_MAGNETS; 
+        kilometersPerHour = metersPerSecond / 3.6;
+    } else {
+        kilometersPerHour = 0;
+    }
 
     setMotorTargetPosition(kilometersPerHour / 10);
+
+    if (mode == TRIP && consumeLongButtonPress() == BUTTON_DOWN) {
+        cli();
+        tripResetMeters = odoMeters;
+        sei();
+    }
 }
 
 void displaySpeed() {
@@ -76,13 +91,10 @@ void displaySpeed() {
 }
 
 void displayOdo() {
-    lcdDisplayInteger(0, "km");
+    lcdDisplayInteger(odoMeters / 1000, "km");
 }
 
 void displayTrip() {
-    lcdDisplayInteger(0, "km");
+    lcdDisplayFloat((odoMeters - tripResetMeters) / 1000, 1, "km");
 }
-
-// TODO: setMotorPosition should take double between 0.0 and 12.0
-// TODO: motor should check > 0 and < max steps
 

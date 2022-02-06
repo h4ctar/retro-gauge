@@ -59,7 +59,7 @@ void update() {
     updateIndicators();
 
     updateBatteryVoltage();
-    updateSpeedo();
+    updateSpeedo(mode);
     updateClock();
 
     if (consumeShortButtonPress() == BUTTON_DOWN) {
