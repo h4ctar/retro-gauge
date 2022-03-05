@@ -3,8 +3,8 @@
 
 #include <stdint.h>
 
-#define MILLISECONDS_PER_SECOND 1000.
-#define MICROSECONDS_PER_SECOND (1000. * MILLISECONDS_PER_SECOND)
+#define MILLISECONDS_PER_SECOND 1000.0
+#define MICROSECONDS_PER_SECOND 1000000.0
 
 void initTimer();
 uint32_t millis();
