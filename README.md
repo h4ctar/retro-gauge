@@ -257,6 +257,7 @@ EEPROM has like 100,000 writes before it wears out, so in order to be able to st
 To do this we will have a table at the start of the EEPROM that stores the address of each value and if the EEPROM gets corrupt we will find a new place to store it and update the table.
 
 | Address | Size | Description            |
+| ------- | ---- | ---------------------- |
 | 0       | 8    | ODO Address            |
 | 1       | 8    | Trip Address           |
 | 2       | 8    | Wheel diameter         |
