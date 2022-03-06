@@ -38,3 +38,14 @@ uint16_t eepromRead16(uint16_t address) {
     return (eepromRead(address) << 8) + eepromRead(address + 1);
 }
 
+void eepromWrite32(uint8_t address, uint32_t data) {
+    eepromWrite(address, data >> 24);
+    eepromWrite(address + 1, data >> 16 & 0xFF);
+    eepromWrite(address + 2, data >> 8 & 0xFF);
+    eepromWrite(address + 3, data & 0xFF);
+}
+
+uint32_t eepromRead32(uint16_t address) {
+    return ((uint32_t) eepromRead(address) << 24) + (eepromRead(address + 1) << 15) + (eepromRead(address + 2) << 8) + eepromRead(address + 3);
+}
+

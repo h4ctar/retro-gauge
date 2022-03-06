@@ -18,7 +18,7 @@
 #define SPEED_PIN  PD7
 
 #define ODO_ADDRESS     0
-#define TRIP_ADDRESS    2
+#define TRIP_ADDRESS    4
 
 #define WHEEL_DIAMETER          0.68
 #define WHEEL_CIRCUMFERENCE     (M_PI * WHEEL_DIAMETER)
@@ -94,30 +94,28 @@ void updateSpeedo(Mode mode) {
 }
 
 void readOdo() {
-    odo = eepromRead16(ODO_ADDRESS) * 100;
+    odo = eepromRead32(ODO_ADDRESS) * 100;
 }
 
 void readTrip() {
-    trip = eepromRead16(TRIP_ADDRESS) * 100;
+    trip = eepromRead32(TRIP_ADDRESS) * 100;
 }
 
 void writeOdo() {
-    static uint16_t lastWrite;
-    // Only write once every kilometre
-    uint16_t kilometers = odo / 100;
-    if ((uint16_t) kilometers != lastWrite) {
-        lastWrite = kilometers;
-        eepromWrite16(ODO_ADDRESS, lastWrite);
+    static uint32_t lastWrite = 42;
+    uint32_t value = odo / 100;
+    if (value != lastWrite) {
+        lastWrite = value;
+        eepromWrite32(ODO_ADDRESS, lastWrite);
     }
 }
 
 void writeTrip() {
-    static uint16_t lastWrite;
-    // Only write once every kilometre
-    uint16_t kilometers = trip / 100;
-    if ((uint16_t) kilometers != lastWrite) {
-        lastWrite = kilometers;
-        eepromWrite16(TRIP_ADDRESS, lastWrite);
+    static uint32_t lastWrite = 42;
+    uint32_t value = trip / 100;
+    if (value != lastWrite) {
+        lastWrite = value;
+        eepromWrite32(TRIP_ADDRESS, lastWrite);
     }
 }
 
