@@ -1,8 +1,8 @@
 (footprint "High_Beam" (version 20211014) (generator pcbnew)
   (layer "F.Cu")
-  (tedit 6223F9DD)
+  (tedit 6223FE3B)
   (attr board_only exclude_from_pos_files exclude_from_bom)
-  (fp_text reference "G***" (at 0 -5.08) (layer "F.SilkS")
+  (fp_text reference "G***" (at 0 -5.08) (layer "F.SilkS") hide
     (effects (font (size 1.524 1.524) (thickness 0.3)))
     (tstamp 2822bca8-30aa-4ab2-8bfe-35bd6bca2a80)
   )

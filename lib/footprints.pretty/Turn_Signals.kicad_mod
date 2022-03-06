@@ -1,8 +1,8 @@
 (footprint "Turn_Signals" (version 20211014) (generator pcbnew)
   (layer "F.Cu")
-  (tedit 6223FA45)
+  (tedit 6223FE91)
   (attr board_only exclude_from_pos_files exclude_from_bom)
-  (fp_text reference "G***" (at 0.24128 -5.08) (layer "F.SilkS")
+  (fp_text reference "G***" (at 0.24128 -5.08) (layer "F.SilkS") hide
     (effects (font (size 1.524 1.524) (thickness 0.3)))
     (tstamp dc587071-cf10-4ce9-ae6c-4c72ef2698a5)
   )
