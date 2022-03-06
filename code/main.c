@@ -31,7 +31,6 @@ int main() {
     init();
 
     while (1) {
-//        lcdDisplayFloat(micros() / 1000000.0, 2, "");
         update();
         display();
     }

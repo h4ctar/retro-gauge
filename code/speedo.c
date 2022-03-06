@@ -6,14 +6,19 @@
 #include <stdint.h>
 
 #include "button.h"
+#include "indicators.h"
 #include "lcd.h"
 #include "mode.h"
 #include "motor.h"
 #include "timer.h"
+#include "eeprom.h"
 
 #define SPEED_PORT PORTD
 #define SPEED_DDR  DDRD
 #define SPEED_PIN  PD7
+
+#define ODO_ADDRESS     0
+#define TRIP_ADDRESS    2
 
 #define WHEEL_DIAMETER          0.68
 #define WHEEL_CIRCUMFERENCE     (M_PI * WHEEL_DIAMETER)
@@ -32,6 +37,12 @@ volatile double trip = 0;
 
 double speed = 0;
 
+void initInterrupt();
+void readOdo();
+void readTrip();
+void writeOdo();
+void writeTrip();
+
 ISR(PCINT2_vect) {
     if (PIND & (1 << PD7)) {
         long pulseTime = millis();
@@ -49,6 +60,13 @@ void initSpeedo() {
     // Make the pin an input
     SPEED_DDR &= ~SPEED_PIN;
 
+    initInterrupt();
+
+    readOdo();
+    readTrip();
+}
+
+void initInterrupt() {
     cli();
     // Turn on the pin change interrupt for PORTD
     PCICR |= 0b00000100;
@@ -69,6 +87,37 @@ void updateSpeedo(Mode mode) {
 
     if (mode == TRIP && consumeLongButtonPress() == BUTTON_DOWN) {
         trip = 0;
+    }
+
+    writeOdo();
+    writeTrip();
+}
+
+void readOdo() {
+    odo = eepromRead16(ODO_ADDRESS) * 100;
+}
+
+void readTrip() {
+    trip = eepromRead16(TRIP_ADDRESS) * 100;
+}
+
+void writeOdo() {
+    static uint16_t lastWrite;
+    // Only write once every kilometre
+    uint16_t kilometers = odo / 100;
+    if ((uint16_t) kilometers != lastWrite) {
+        lastWrite = kilometers;
+        eepromWrite16(ODO_ADDRESS, lastWrite);
+    }
+}
+
+void writeTrip() {
+    static uint16_t lastWrite;
+    // Only write once every kilometre
+    uint16_t kilometers = trip / 100;
+    if ((uint16_t) kilometers != lastWrite) {
+        lastWrite = kilometers;
+        eepromWrite16(TRIP_ADDRESS, lastWrite);
     }
 }
 
