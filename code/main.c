@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #include "button.h"
+#include "eeprom.h"
 #include "twi.h"
 #include "rtc.h"
 #include "analog.h"
@@ -12,6 +13,7 @@
 #include "led.h"
 #include "lcd.h"
 #include "motor.h"
+#include "config.h"
 
 #include "mode.h"
 

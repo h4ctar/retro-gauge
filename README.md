@@ -249,3 +249,18 @@ The case is 3D printed out of ASA.
 
 ![Case](./images/case.png)
 
+## EEPROM
+
+The ODO, trip and configuration will be stored in EEPROM.
+
+EEPROM has like 100,000 writes before it wears out, so in order to be able to store the ODO and trip we will need to be able to rotate to new address'.
+To do this we will have a table at the start of the EEPROM that stores the address of each value and if the EEPROM gets corrupt we will find a new place to store it and update the table.
+
+| Address | Size | Description            |
+| 0       | 8    | ODO Address            |
+| 1       | 8    | Trip Address           |
+| 2       | 8    | Wheel diameter         |
+| 15      | 8    | Next available address |
+| 16      | 32   | ODO value              |
+| 20      | 32   | Trip value             |
+

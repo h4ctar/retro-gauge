@@ -12,13 +12,11 @@
 #include "motor.h"
 #include "timer.h"
 #include "eeprom.h"
+#include "config.h"
 
 #define SPEED_PORT PORTD
 #define SPEED_DDR  DDRD
 #define SPEED_PIN  PD7
-
-#define ODO_ADDRESS     0
-#define TRIP_ADDRESS    4
 
 #define WHEEL_DIAMETER          0.68
 #define WHEEL_CIRCUMFERENCE     (M_PI * WHEEL_DIAMETER)
@@ -38,6 +36,7 @@ volatile double trip = 0;
 double speed = 0;
 
 void initInterrupt();
+void reset();
 void readOdo();
 void readTrip();
 void writeOdo();
@@ -64,6 +63,9 @@ void initSpeedo() {
 
     readOdo();
     readTrip();
+
+    // Uncomment to reset
+    // reset();
 }
 
 void initInterrupt() {
@@ -74,6 +76,13 @@ void initInterrupt() {
     // Enable it only for PD7
     PCMSK2 |= 0b10000000;
     sei();
+}
+
+void reset() {
+    eepromWrite(ODO_INDEX, 16);
+    eepromWrite32(16, 0);
+    eepromWrite(TRIP_INDEX, 20);
+    eepromWrite32(20, 0);
 }
 
 void updateSpeedo(Mode mode) {
@@ -94,29 +103,19 @@ void updateSpeedo(Mode mode) {
 }
 
 void readOdo() {
-    odo = eepromRead32(ODO_ADDRESS) * 100;
+    odo = readConfig32(ODO_INDEX);
 }
 
 void readTrip() {
-    trip = eepromRead32(TRIP_ADDRESS) * 100;
+    trip = readConfig32(TRIP_INDEX);
 }
 
 void writeOdo() {
-    static uint32_t lastWrite = 42;
-    uint32_t value = odo / 100;
-    if (value != lastWrite) {
-        lastWrite = value;
-        eepromWrite32(ODO_ADDRESS, lastWrite);
-    }
+    writeConfig32(ODO_INDEX, odo);
 }
 
 void writeTrip() {
-    static uint32_t lastWrite = 42;
-    uint32_t value = trip / 100;
-    if (value != lastWrite) {
-        lastWrite = value;
-        eepromWrite32(TRIP_ADDRESS, lastWrite);
-    }
+    writeConfig32(TRIP_INDEX, trip);
 }
 
 void displaySpeed() {
