@@ -1132,7 +1132,7 @@
   (gr_circle (center 183.77 80.5) (end 185.27 80.5) (layer "Edge.Cuts") (width 0.15) (fill none) (tstamp 842e430f-0c35-45f3-a0b5-95ae7b7ae388))
   (gr_line (start 126 118.5) (end 126 127.5) (layer "Edge.Cuts") (width 0.15) (tstamp 98e81e80-1f85-4152-be3f-99785ea97751))
   (gr_circle (center 150 100) (end 193 100) (layer "Edge.Cuts") (width 0.15) (fill none) (tstamp a795f1ba-cdd5-4cc5-9a52-08586e982934))
-  (gr_circle (center 124 116) (end 124.45 116) (layer "Edge.Cuts") (width 0.15) (fill none) (tstamp b3d08afa-f296-4e3b-8825-73b6331d35bf))
+  (gr_circle (center 122.5 116.975) (end 122.95 116.975) (layer "Edge.Cuts") (width 0.15) (fill none) (tstamp b3d08afa-f296-4e3b-8825-73b6331d35bf))
   (gr_arc (start 128 129.5) (mid 126.585786 128.914214) (end 126 127.5) (layer "Edge.Cuts") (width 0.15) (tstamp c801d42e-dd94-493e-bd2f-6c3ddad43f55))
   (gr_line (start 128 129.5) (end 172 129.5) (layer "Edge.Cuts") (width 0.15) (tstamp dde3dba8-1b81-466c-93a3-c284ff4da1ef))
   (gr_text "Motorcycle Tacho\nv1.1" (at 150 82) (layer "B.SilkS") (tstamp 68e09be7-3bbc-4443-a838-209ce20b2bef)
