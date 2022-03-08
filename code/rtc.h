@@ -10,6 +10,7 @@ typedef struct {
 } Time;
 
 void readTime(Time* time);
+void setTime(Time time);
 
 #endif
 

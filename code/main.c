@@ -22,7 +22,7 @@
 #include "battery.h"
 #include "clock.h"
 
-Mode mode = BATTERY;
+Mode mode = SPEED;
 uint32_t modeSwitchTime;
 
 void init();
@@ -62,7 +62,7 @@ void update() {
 
     updateBatteryVoltage();
     updateSpeedo(mode);
-    updateClock();
+    updateClock(mode);
 
     if (consumeShortButtonPress() == BUTTON_DOWN) {
         mode = (mode + 1) % NUMBER_OF_MODES;

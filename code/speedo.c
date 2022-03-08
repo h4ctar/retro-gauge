@@ -18,14 +18,14 @@
 #define SPEED_DDR  DDRD
 #define SPEED_PIN  PD7
 
-#define WHEEL_DIAMETER          0.68
-#define WHEEL_CIRCUMFERENCE     (M_PI * WHEEL_DIAMETER)
-#define NUMBER_OF_MAGNETS       1.0
-#define DISTANCE_PER_PULSE      (WHEEL_CIRCUMFERENCE / NUMBER_OF_MAGNETS)
+#define WHEEL_DIAMETER          0.68                    // metres
+#define WHEEL_CIRCUMFERENCE     (M_PI * WHEEL_DIAMETER) // metres
+#define NUMBER_OF_MAGNETS       2.0
+#define DISTANCE_PER_PULSE      (WHEEL_CIRCUMFERENCE / NUMBER_OF_MAGNETS) // metres
 #define METERS_PER_KILOMETER    1000.0
 #define MPS_TO_KPH              3.6
-#define MIN_SPEED               5.0 // kilometers per hour
-#define MIN_PULSE_PERIOD        (DISTANCE_PER_PULSE / (MIN_SPEED / MPS_TO_KPH) * MILLISECONDS_PER_SECOND)
+#define MIN_SPEED               5.0 // kilometres per hour
+#define MIN_PULSE_PERIOD        (DISTANCE_PER_PULSE / (MIN_SPEED / MPS_TO_KPH) * MILLISECONDS_PER_SECOND)   // milliseconds
 
 volatile uint32_t pulsePeriod = 0;
 volatile uint32_t lastPulseTime = 0;

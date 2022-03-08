@@ -1,7 +1,9 @@
 #ifndef _CLOCK_H
 #define _CLOCK_H
 
-void updateClock();
+#include "mode.h"
+
+void updateClock(Mode mode);
 void displayClock();
 
 #endif
