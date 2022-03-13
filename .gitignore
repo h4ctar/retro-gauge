@@ -38,3 +38,5 @@ compile_commands.json
 .cache
 *.gbr
 *.drl
+
+*.FCStd1
