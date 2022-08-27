@@ -29,6 +29,7 @@ fp-info-cache
 
 
 *.o
+*.d
 *.hex
 
 *.pdf
