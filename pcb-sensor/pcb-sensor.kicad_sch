@@ -1696,7 +1696,7 @@
     (property "Reference" "R11" (id 0) (at 263.398 137.2616 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10k" (id 1) (at 263.398 139.573 0)
+    (property "Value" "1k" (id 1) (at 263.398 139.573 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (id 2) (at 259.842 138.43 90)
@@ -2546,7 +2546,7 @@
       (reference "R10") (unit 1) (value "10k") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
     )
     (path "/00000000-0000-0000-0000-0000616846c0"
-      (reference "R11") (unit 1) (value "10k") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
+      (reference "R11") (unit 1) (value "1k") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
     )
     (path "/00000000-0000-0000-0000-0000617d50e9"
       (reference "U1") (unit 1) (value "LM340MP") (footprint "Package_TO_SOT_SMD:SOT-223")
