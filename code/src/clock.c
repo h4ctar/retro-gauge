@@ -28,12 +28,12 @@ void updateClock(Mode mode) {
         } else if (subMode != NORMAL && consumeShortButtonPress() == BUTTON_DOWN) {
             switch (subMode) {
                 case SET_HOUR:
-                    time.hour++;
+                    time.hour = (time.hour + 1) % 24;
                     setTime(time);
                     break;
 
                 case SET_MINUTE:
-                    time.minute++;
+                    time.minute = (time.minute + 1) % 60;
                     setTime(time);
                     break;
 
