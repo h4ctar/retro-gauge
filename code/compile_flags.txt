@@ -1,5 +1,6 @@
 /usr/bin/clang
 -Wall
+-Wno-unknown-attributes
 --target=avr
 -mmcu=atmega328p
 -O
@@ -9,4 +10,5 @@
 ./include
 -DF_CPU=16000000
 -D__AVR_ATmega328P__
+-D__DELAY_BACKWARD_COMPATIBLE__
 -c
