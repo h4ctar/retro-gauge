@@ -35,7 +35,7 @@ Here are all the required inputs and outputs:
 | Tacho           | Digital input  | 1                 |
 | Speedo          | Digital input  | 1                 |
 | Oil pressure    | Digital input  | 1                 |
-| Turn signals    | Digital input  | 2                 |
+| Turn signals    | Digital input  | 1                 |
 | Neutral         | Digital input  | 1                 |
 | High beam       | Digital input  | 1                 |
 | Mode button     | Digital input  | 1                 |
@@ -46,7 +46,7 @@ Here are all the required inputs and outputs:
 | ISP             | Digital IO     | 3 (can be shared) |
 | Real time clock | Digital IO     | 2                 |
 
-For a total of 19 digital IOs and one analog input, the ATmega328P-PU has more than enough at 23 programmable IO lines.
+For a total of 18 digital IOs and one analog input, the ATmega328P-PU has more than enough at 23 programmable IO lines.
 
 The ATmega328P-PU also has 1024 bytes of EEPROM which can be used to store the configuration, trip and odometer values.
 
