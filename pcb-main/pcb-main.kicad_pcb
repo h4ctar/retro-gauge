@@ -2095,7 +2095,7 @@
   (gr_text "ADC6" (at 164.5 81.7) (layer "F.SilkS") (tstamp 00000000-0000-0000-0000-0000614601cb)
     (effects (font (size 1 1) (thickness 0.15)) (justify right))
   )
-  (gr_text "Motorcycle Tacho\nv1.1" (at 119 85.5) (layer "F.SilkS") (tstamp 00000000-0000-0000-0000-000061901231)
+  (gr_text "Motorcycle Tacho\nv1.2" (at 119 85.5) (layer "F.SilkS") (tstamp 00000000-0000-0000-0000-000061901231)
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (gr_text "PD2" (at 171 74.08) (layer "F.SilkS") (tstamp 00000000-0000-0000-0000-0000619019a5)

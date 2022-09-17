@@ -1631,7 +1631,7 @@
   (gr_text "SPEED_GND" (at 156.2 125.5 -90) (layer "F.SilkS") (tstamp 00000000-0000-0000-0000-000061a29d2f)
     (effects (font (size 1 1) (thickness 0.15)) (justify left))
   )
-  (gr_text "Motorcycle Tacho\nv1.1" (at 120 105) (layer "F.SilkS") (tstamp 2a4111b7-8149-4814-9344-3b8119cd75e4)
+  (gr_text "Motorcycle Tacho\nv1.2" (at 120 105) (layer "F.SilkS") (tstamp 2a4111b7-8149-4814-9344-3b8119cd75e4)
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (gr_text "PD6" (at 164.5 71.54) (layer "F.SilkS") (tstamp 35fb7c56-dc85-43f7-b954-81b8040a8500)
