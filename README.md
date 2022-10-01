@@ -1,4 +1,4 @@
-# Motorcycle Tacho
+# Retro Gauge
 
 ## Introduction
 
@@ -265,3 +265,18 @@ To do this we will have a table at the start of the EEPROM that stores the addre
 | 16      | 32   | ODO value              |
 | 20      | 32   | Trip value             |
 
+## Firmware
+
+The source code is in the `firmware/src` directory.
+
+There is a makefile with a default target to compile and link the source into a hex file; a `burn` target to burn this hex to the micro and a `fuses` target to write the fuses.
+It is configured to use avrdude and a usbtiny programmer to talk to the microcontroller, but it should be possible to modify it to use other methods.
+The code is compiled with clang.
+There is a compile_flags.txt file that is used to configure a language server so that Vim or Visual Studio Code can give nice completion and code navigation.
+
+On Arch linux I install the following tools and dependencies:
+
+ * llvm
+ * avrdude
+ * avr-libc
+ * lib32-glibc
