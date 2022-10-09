@@ -3937,7 +3937,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 48a77ebe-3e04-4302-a406-53d7b17c46cd)
     (property "Reference" "R1" (id 0) (at 34.29 154.94 90))
-    (property "Value" "10k" (id 1) (at 34.29 157.48 90))
+    (property "Value" "100k" (id 1) (at 34.29 157.48 90))
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (id 2) (at 34.29 163.068 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -4183,7 +4183,7 @@
       (reference "M1") (unit 1) (value "Stepper_Motor") (footprint "footprints:Stepper Motor")
     )
     (path "/48a77ebe-3e04-4302-a406-53d7b17c46cd"
-      (reference "R1") (unit 1) (value "10k") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
+      (reference "R1") (unit 1) (value "100k") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
     )
     (path "/00000000-0000-0000-0000-000061a7ca87"
       (reference "R2") (unit 1) (value "10k") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
