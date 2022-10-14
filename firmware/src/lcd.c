@@ -139,7 +139,7 @@ const uint8_t addressMapping[8][4] = {
     {15,17,16,14},
 };
 
-uint8_t buffer[32];
+uint8_t lcdBuffer[32];
 
 void writeAscii(uint8_t ascii, uint8_t dp, uint8_t digit);
 void writeCommand(uint8_t command);
@@ -242,14 +242,14 @@ void writeCommand(uint8_t command) {
 }
 
 void writeData(uint8_t address, uint8_t data) {
-    if (buffer[address] != data) {
+    if (lcdBuffer[address] != data) {
         LCD_PORT &= ~CS_MASK;
         writeBits(DATA_MODE, 3);
         writeBits(address, 6);
         writeBits(data, 4);
         LCD_PORT |= CS_MASK;
         
-        buffer[address] = data;
+        lcdBuffer[address] = data;
     }
 }
 

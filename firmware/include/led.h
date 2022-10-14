@@ -5,7 +5,7 @@
 
 void initLed();
 
-void writeLeds(long ledColors[], int size);
+void writeLeds(long ledColors[], int length);
 
 #endif
 

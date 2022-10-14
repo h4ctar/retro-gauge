@@ -31,6 +31,8 @@
         [offCycles] "I"(NS_TO_CYCLES(timeLow) - 2) \
     )
 
+uint8_t ledBuffer[6];
+
 inline void sendByte(unsigned char byte);
 inline void sendBit(unsigned char bitVal);
 
@@ -38,15 +40,25 @@ void initLed() {
     LED_DDR |= 1 << LED_BIT;
 }
 
-void writeLeds(long ledColors[], int size) {
-    cli();
-    for (int i = 0; i < size; i++) {
-        sendByte(ledColors[i] >> 8 & 0xFF);
-        sendByte(ledColors[i] >> 16 & 0xFF);
-        sendByte(ledColors[i] & 0xFF);
+void writeLeds(long ledColors[], int length) {
+    if (ledColors[0] != ledBuffer[0] ||
+        ledColors[1] != ledBuffer[1] ||
+        ledColors[2] != ledBuffer[2] ||
+        ledColors[3] != ledBuffer[3] ||
+        ledColors[4] != ledBuffer[4] ||
+        ledColors[5] != ledBuffer[5]) {
+        cli();
+        for (int i = 0; i < length; i++) {
+            sendByte(ledColors[i] >> 8 & 0xFF);
+            sendByte(ledColors[i] >> 16 & 0xFF);
+            sendByte(ledColors[i] & 0xFF);
+
+            ledBuffer[i] = ledColors[i];
+        }
+        // What is this delay for?
+        _delay_us(250);
+        sei();
     }
-    _delay_us(250);
-    sei();
 }
 
 inline void sendByte(unsigned char byte) {
