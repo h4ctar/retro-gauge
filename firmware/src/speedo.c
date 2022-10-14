@@ -16,7 +16,7 @@
 
 #define SPEED_PORT PORTD
 #define SPEED_DDR  DDRD
-#define SPEED_PIN  PD7
+#define SPEED_PIN  PD2
 
 #define WHEEL_DIAMETER          0.68                    // metres
 #define WHEEL_CIRCUMFERENCE     (M_PI * WHEEL_DIAMETER) // metres
@@ -42,17 +42,15 @@ void readTrip();
 void writeOdo();
 void writeTrip();
 
-ISR(PCINT2_vect) {
-    if (PIND & (1 << PD7)) {
-        long pulseTime = millis();
-        pulsePeriod = pulseTime - lastPulseTime;
-        lastPulseTime = pulseTime;
+ISR(INT0_vect) {
+    long pulseTime = millis();
+    pulsePeriod = pulseTime - lastPulseTime;
+    lastPulseTime = pulseTime;
 
-        odo += DISTANCE_PER_PULSE;
-        // This is needed because of a bug in the optimiser?
-        // It should only put it out a percent or two
-        trip += (DISTANCE_PER_PULSE + 0.01);
-    }
+    odo += DISTANCE_PER_PULSE;
+    // This is needed because of a bug in the optimiser?
+    // It should only put it out a percent or two
+    trip += (DISTANCE_PER_PULSE + 0.01);
 }
 
 void initSpeedo() {
@@ -64,17 +62,21 @@ void initSpeedo() {
     readOdo();
     readTrip();
 
-    // Uncomment to reset
+    // Uncomment to reset the ODO and trip
     // reset();
 }
 
 void initInterrupt() {
     cli();
-    // Turn on the pin change interrupt for PORTD
-    PCICR |= 0b00000100;
 
-    // Enable it only for PD7
-    PCMSK2 |= 0b10000000;
+    // Set INT0(PD2) to sense on rising edge
+    EICRA |= 1 << ISC00 & 1 << ISC01;
+
+    // Enable global interrupts
+    SREG |= 1 << SREG_I;
+
+    EIMSK |= 1 << INT0;
+
     sei();
 }
 
