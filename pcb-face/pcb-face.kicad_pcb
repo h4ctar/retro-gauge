@@ -1912,7 +1912,7 @@
   (gr_circle (center 122.5 116.975) (end 122.95 116.975) (layer "Edge.Cuts") (width 0.15) (fill none) (tstamp b3d08afa-f296-4e3b-8825-73b6331d35bf))
   (gr_arc (start 128 129.5) (mid 126.585786 128.914214) (end 126 127.5) (layer "Edge.Cuts") (width 0.15) (tstamp c801d42e-dd94-493e-bd2f-6c3ddad43f55))
   (gr_line (start 128 129.5) (end 172 129.5) (layer "Edge.Cuts") (width 0.15) (tstamp dde3dba8-1b81-466c-93a3-c284ff4da1ef))
-  (gr_text "Motorcycle Tacho\nv1.2" (at 150 82) (layer "B.SilkS") (tstamp 68e09be7-3bbc-4443-a838-209ce20b2bef)
+  (gr_text "Retro Gauge\nv1.3" (at 150 82) (layer "B.SilkS") (tstamp 68e09be7-3bbc-4443-a838-209ce20b2bef)
     (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
   )
   (gr_text "JLCJLCJLCJLC" (at 150 85) (layer "B.SilkS") (tstamp 6a780180-586a-4241-a52d-dc7a5ffcc966)
