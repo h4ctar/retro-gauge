@@ -280,3 +280,7 @@ On Arch linux I install the following tools and dependencies:
  * avrdude
  * avr-libc
  * lib32-glibc
+
+## Datasheets
+
+ * [WS2812B](https://www.digikey.com.au/en/datasheets/parallaxinc/parallax-inc-28085-ws2812b-rgb-led-datasheet)
