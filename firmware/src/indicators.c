@@ -6,7 +6,7 @@
 
 #define INDICATOR_PIN       PIND
 #define INDICATOR_DDR       DDRD
-#define OIL_MASK            (1 << PD3)
+#define OIL_MASK            (1 << PD1)
 #define TURN_SIGNAL_MASK    (1 << PD5)
 #define HIGH_BEAM_MASK      (1 << PD4)
 #define NEUTRAL_MASK        (1 << PD6)
