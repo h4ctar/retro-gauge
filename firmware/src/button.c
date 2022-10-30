@@ -6,7 +6,7 @@
 
 #define BUTTON_PIN  PIND
 #define BUTTON_DDR  DDRD
-#define BUTTON_MASK (1 << PD1)
+#define BUTTON_MASK (1 << PD0)
 
 #define SHORT_PRESS_DURATION 1000
 
