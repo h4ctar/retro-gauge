@@ -1,4 +1,4 @@
-(footprint "Stepper Motor" (version 20211014) (generator pcbnew)
+(footprint "X27.168" (version 20211014) (generator pcbnew)
   (layer "F.Cu")
   (tedit 5CE0FDFB)
   (attr through_hole)
@@ -6,7 +6,7 @@
     (effects (font (size 1 1) (thickness 0.15)))
     (tstamp f833c930-b464-44f3-8678-abc31703a01d)
   )
-  (fp_text value "Stepper Motor" (at 0 -0.5) (layer "F.Fab")
+  (fp_text value "X27.168" (at 0 -0.5) (layer "F.Fab")
     (effects (font (size 1 1) (thickness 0.15)))
     (tstamp fe100ceb-12c9-4270-a2c4-53cf7d0bf2d6)
   )
@@ -18,7 +18,7 @@
   (pad "2" thru_hole circle (at -11.43 -3.81) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask) (tstamp 24841f93-130a-4e04-900c-845e3b8f5060))
   (pad "3" thru_hole circle (at 11.43 -3.81) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask) (tstamp 52e13742-8e35-4d04-b866-0f6d4e87720e))
   (pad "4" thru_hole circle (at 11.43 3.81) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask) (tstamp aa95143b-edf6-4d03-93f6-d48cc3bbaf20))
-  (model "/home/ben/Downloads/3617310_X27_168_Stepper_Motor_model/files/Unnamed-X27.168_Stepper_Motor.wrl"
+  (model "/home/ben/dev/retro-gauge/lib/3d-models/x27-168.wrl"
     (offset (xyz 0 0 9.5))
     (scale (xyz 0.3937 0.3937 0.3937))
     (rotate (xyz 0 0 180))
