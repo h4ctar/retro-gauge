@@ -55,6 +55,8 @@ An external 16 MHz crystal will be used to run the ATmega328P-PU at it's fastest
 The microcontroller will be programmed with an in-circuit serial programmer (ICSP).
 A bootloader doesnt need to be burned when using ICSP.
 
+![ATmega328P](images/atmega328p.png)
+
 The low byte fuses configure the clock:
 
 | Bit | Name   | Description                                | Value |
@@ -110,11 +112,13 @@ There are indicator lights for low oil pressure, neutral, high beam and turn sig
 The oil pressure and neutral sensors are simple switches to ground.
 So these will be directly connected to digital input pins.
 I'm not sure if the internal pull ups will be good enough so there will be provision on the PCB for external pull up resistors.
+There will be a diode to protect against connecting this pin to 12V on the bike.
 
 ![Neutral](./images/neutral.png)
 
 The highbeam and turn signals indicators should light up when they see 12V.
 We'll use an optocoupler to give some extra protection.
+The left and right turn signals need to go through diodes to stop them turning each other on.
 
 ![Turn Signals](./images/turn-signals.png)
 
@@ -134,7 +138,16 @@ R2 = (5V - 4V) / 5mA = 200 ohm
 
 ## Tachometer
 
+There are a few choices for the tachometer pickup, an inductive or capacitive pickup on one of the spark plug wires, or a hall effect sensor on a rotating part of the engine.
+The most robust solution is to go with the hall effect sensor, and the most universal location for it is in replacement of the mechanical drive off the camshaft of the original tachometer.
+
+![Tachometer](./images/tachometer.png)
+
 ## Speedometer
+
+The speedometer will also be a hall effect pickup, but will be a simpler design with a few magnets on the wheel and an NPN hall effect sensor mounted on an axel spacer.
+
+![Speed Pickup](./images/speed-pickup.jpg)
 
 ## Real Time Clock
 
@@ -150,13 +163,18 @@ It is a transflective LCD so works well in both bright sunlight and at night wit
 It is an 8 character 14 (plus 2) segment "starburst" display.
 It has a total of (14 + 2) \* 8 = 128 segments and uses 4 backplanes.
 
+![LCD Segment Names](./images/14seg.png)
+
 The HT1621B will be used to drive the LCD.
 There are some existing Arduino libraries to interface with it.
 It can drive 32 segments by 4 commons which is exactly what is required to drive the selected LCD.
 
-The wiring of the driver to the display is optimised for the PCB layout.
+The schematic of the driver to the display follows the application notes in the datasheet and is optimised for the PCB layout.
+It is controlled with 3 pins that are also used by the ICSP.
 
-![LCD Segment Names](./images/14seg.png)
+![LCD Schematic](./images/lcd-schematic.png)
+
+![LCD PCB](./images/lcd-pcb.png)
 
 This table has the LCD segments from the datasheet and what memory address they are according to the PCB layout:
 
@@ -232,6 +250,10 @@ The X25 datasheet shows the required pattern to step the motor.
 
 ![Step Pattern](./images/stepper-pattern.png)
 
+## Indicators
+
+![Neopixels](./images/neopixels.png)
+
 ## PCB Design
 
 There are three PCBs: the main board, the sensor board and the face board.
@@ -283,4 +305,6 @@ On Arch linux I install the following tools and dependencies:
 
 ## Datasheets
 
+ * [ATmega328p](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf)
+ * [HT1621B](https://www.holtek.com/documents/10179/116711/HT1621v321.pdf)
  * [WS2812B](https://www.digikey.com.au/en/datasheets/parallaxinc/parallax-inc-28085-ws2812b-rgb-led-datasheet)
