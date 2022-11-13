@@ -558,7 +558,7 @@
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 2925120e-08ce-4512-a19f-a94ffae65192)
     )
-    (fp_text value "LOGO" (at 0 0) (layer "F.Fab")
+    (fp_text value "LOGO" (at 0 0) (layer "F.Fab") hide
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 875836db-e2df-402a-a219-aedbfdd5ffca)
     )
