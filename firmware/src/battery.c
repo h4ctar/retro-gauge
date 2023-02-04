@@ -6,7 +6,7 @@
 #include "mode.h"
 #include <stdint.h>
 
-#define BATTERY_CHANNEL 7
+#define BATTERY_CHANNEL 6
 
 #define NUM_READINGS 10
 

@@ -299,6 +299,7 @@ There is a compile_flags.txt file that is used to configure a language server so
 On Arch linux I install the following tools and dependencies:
 
  * llvm
+ * clang
  * avrdude
  * avr-libc
  * lib32-glibc

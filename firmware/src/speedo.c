@@ -16,7 +16,7 @@
 
 #define SPEED_PORT PORTD
 #define SPEED_DDR  DDRD
-#define SPEED_PIN  PD2
+#define SPEED_PIN  PD3
 
 #define WHEEL_DIAMETER          0.68                    // metres
 #define WHEEL_CIRCUMFERENCE     (M_PI * WHEEL_DIAMETER) // metres
@@ -27,7 +27,7 @@
 #define MIN_SPEED               5.0 // kilometres per hour
 #define MIN_PULSE_PERIOD        (DISTANCE_PER_PULSE / (MIN_SPEED / MPS_TO_KPH) * MILLISECONDS_PER_SECOND)   // milliseconds
 
-volatile uint32_t pulsePeriod = 0;
+volatile uint32_t pulsePeriod = 1;
 volatile uint32_t lastPulseTime = 0;
 
 volatile double odo = 0;
@@ -42,13 +42,13 @@ void readTrip();
 void writeOdo();
 void writeTrip();
 
-ISR(INT0_vect) {
+ISR(INT1_vect) {
     long pulseTime = millis();
     pulsePeriod = pulseTime - lastPulseTime;
     lastPulseTime = pulseTime;
 
     odo += DISTANCE_PER_PULSE;
-    // This is needed because of a bug in the optimiser?
+    // TODO: remove this - This is needed because of a bug in the optimiser?
     // It should only put it out a percent or two
     trip += (DISTANCE_PER_PULSE + 0.01);
 }
@@ -57,7 +57,7 @@ void initSpeedo() {
     // Make the pin an input
     SPEED_DDR &= ~SPEED_PIN;
 
-    initInterrupt();
+    // initInterrupt();
 
     readOdo();
     readTrip();
@@ -69,13 +69,14 @@ void initSpeedo() {
 void initInterrupt() {
     cli();
 
-    // Set INT0(PD2) to sense on rising edge
-    EICRA |= 1 << ISC00 & 1 << ISC01;
+    // Set INT1(PD3) to sense on rising edge
+    EICRA |= (1 << ISC10) | (1 << ISC11);
 
     // Enable global interrupts
     SREG |= 1 << SREG_I;
 
-    EIMSK |= 1 << INT0;
+    // Enable INT1
+    EIMSK |= 1 << INT1;
 
     sei();
 }
@@ -88,10 +89,12 @@ void reset() {
 }
 
 void updateSpeedo(Mode mode) {
-    speed = DISTANCE_PER_PULSE / (pulsePeriod / MILLISECONDS_PER_SECOND) * MPS_TO_KPH;
+    if (pulsePeriod != 0) {
+        speed = DISTANCE_PER_PULSE / (pulsePeriod / MILLISECONDS_PER_SECOND) * MPS_TO_KPH;
 
-    if (millis() - lastPulseTime > MIN_PULSE_PERIOD || speed < MIN_SPEED) {
-        speed = 0;
+        if (millis() - lastPulseTime > MIN_PULSE_PERIOD || speed < MIN_SPEED) {
+            speed = 0;
+        }
     }
 
     setMotorTargetPosition(speed / 10);
@@ -131,4 +134,3 @@ void displayOdo() {
 void displayTrip() {
     lcdDisplayFloat(trip / METERS_PER_KILOMETER, 1, "km");
 }
-
